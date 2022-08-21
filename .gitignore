@@ -1,0 +1,5 @@
+.idea
+/venv
+/core/__pycache__
+/guide/__pycache__
+/guide/migrations/__pycache__
