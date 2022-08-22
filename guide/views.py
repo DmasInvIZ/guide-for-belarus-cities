@@ -8,3 +8,7 @@ class ListObjectsView(ListView):
     model = News
     template_name = 'base.html'
     context_object_name = 'news'
+
+
+def about_view(request):
+    return render(request, 'about.html')
