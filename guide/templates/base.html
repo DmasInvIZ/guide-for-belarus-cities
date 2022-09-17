@@ -16,7 +16,7 @@
 </head>
 
 <body>
-{% block body %}
+
 
 <nav class="navbar navbar-expand-lg bg-light" style="position:sticky; top:0; z-index:100">
   <div class="container-fluid">
@@ -44,6 +44,7 @@
   </div>
 </nav>
 
+{% block body %}
 <section>
     <div class="container-sm">
         {% for i in news %}
@@ -58,31 +59,38 @@
         {% endfor %}
     </div>
 </section>
+{% endblock body %}
 
-
-
+{% block footer %}
 <div class="footer">
     <div class="card">
           <div class="card-body">
                 <div class="row align-items-end">
-                <div class="col">
-                  <center>
-                      Информация:<br>
-                      <a href="about/">О проекте</a>
-                  </center>
-                </div>
-                <div class="col">
-                  <center>Конаткты:</center>
-                </div>
-                <div class="col">
-                  <center>Авторы:</center>
-                </div>
+                    <div class="col">
+                      <center>
+                          <td style="height:200px; vertical-align:baseline;">Информация:</td><br>
+                          <a href="about/">О проекте</a>
+                      </center>
+                    </div>
+                    <div class="col">
+                      <center>
+                          <td style="height:200px; vertical-align:top;">Контакты:</td><br>
+                          Телефон - +375 (29) 568-93-21<br>
+                          Email - inviz1806@gmail.com
+                      </center>
+                    </div>
+                    <div class="col">
+                      <center>
+                          <td style="height:200px; vertical-align:top;">Авторы:</td><br>
+                          vk.com - <a href="https://vk.com/link_viscount/">Коваленя Дмитрий</a>
+                      </center>
+                    </div>
                 </div>
           </div>
     </div>
 </div>
+{% endblock footer %}
 
-{% endblock body %}
 </body>
 
 </html>

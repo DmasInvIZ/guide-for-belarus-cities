@@ -1,11 +1,32 @@
 {% extends "base.html" %}
 
-{% block head%}
-    <title>
-    О проекте
-    </title>
-{% endblock head %}
+<title> О проекте </title>
 
 {% block body %}
+<center>
     <h1>Вы на странице описывающей проект, она в разработке</h1>
+</center>
 {% endblock body %}
+
+{% block footer %}
+<div class="footer">
+    <div class="card">
+          <div class="card-body">
+                <div class="row align-items-end">
+                <div class="col">
+                  <center>
+                      Информация:<br>
+                      О проекте
+                  </center>
+                </div>
+                <div class="col">
+                  <center>Конаткты:</center>
+                </div>
+                <div class="col">
+                  <center>Авторы:</center>
+                </div>
+                </div>
+          </div>
+    </div>
+</div>
+{% endblock footer %}
