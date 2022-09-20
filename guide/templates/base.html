@@ -30,10 +30,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/">Home</a>
+          <a class="nav-link" href="#">Что посмотреть</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+          <a class="nav-link" href="#">Что поесть</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Где переночевать</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/admin">Вход для администрации</a>
@@ -47,7 +50,7 @@
   </div>
 </nav>
 
-{% block body %}
+{% block content %}
 <section>
     <div class="container-sm">
         {% for i in news %}
@@ -62,7 +65,7 @@
         {% endfor %}
     </div>
 </section>
-{% endblock body %}
+{% endblock content %}
 
 {% block footer %}
 <div class="footer">
