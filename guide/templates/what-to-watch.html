@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
 <title> Что посмотреть </title>
@@ -11,7 +12,24 @@
 {% endblock nav1 %}
 
 {% block content %}
-<center>
-    <h1>Страница в разработке!</h1>
-</center>
+<section>
+    <div class="container-sm">
+        {% for i in Districts %}
+        <div class="card mb-2">
+          <img src="{{ i.image }}" class="card-img-top" alt="">
+          <div class="card-body">
+            <h5 class="card-title">{{ i.district }}</h5>
+            <p class="card-text">{{ i.text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+{% for i in districts %}
+{{ i.district }}
+{{ i.image }}
+{{ i.text }}
+{% endfor %}
+
 {% endblock content %}
