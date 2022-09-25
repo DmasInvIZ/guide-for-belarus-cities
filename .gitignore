@@ -1,5 +1,5 @@
 .idea
 /venv
-/core/__pycache__
+__pycache__
 /guide/__pycache__
 /guide/migrations/__pycache__

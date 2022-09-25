@@ -12,3 +12,7 @@ class ListObjectsView(ListView):
 
 def about_view(request):
     return render(request, 'about.html')
+
+
+def what_to_watch_view(request):
+    return render(request, 'what-to-watch.html')

@@ -16,10 +16,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
 
     {% endblock head %}
+
 </head>
 
 <body>
-
 
 <nav class="navbar navbar-expand-lg bg-light" style="position:sticky; top:0; z-index:100">
   <div class="container-fluid">
@@ -29,18 +29,26 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          {% block nav1 %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Что посмотреть</a>
+          <a class="nav-link" href="what-to-watch.html/">Что посмотреть</a>
         </li>
+          {% endblock nav1 %}
+          {% block nav2 %}
         <li class="nav-item">
           <a class="nav-link" href="#">Что поесть</a>
         </li>
+          {% endblock nav2 %}
+          {% block nav3 %}
         <li class="nav-item">
           <a class="nav-link" href="#">Где переночевать</a>
         </li>
+          {% endblock nav3 %}
+          {% block nav4 %}
         <li class="nav-item">
           <a class="nav-link" href="/admin">Вход для администрации</a>
         </li>
+          {% endblock nav4 %}
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Что ищем?..." aria-label="Search">
