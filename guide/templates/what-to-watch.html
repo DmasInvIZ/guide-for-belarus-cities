@@ -12,11 +12,12 @@
 {% endblock nav1 %}
 
 {% block content %}
+
 <section>
     <div class="container-sm">
-        {% for i in Districts %}
+        {% for i in districts %}
         <div class="card mb-2">
-          <img src="{{ i.image }}" class="card-img-top" alt="">
+          <img src="{{ i.image }}" class="card-img-top" alt="Photo">
           <div class="card-body">
             <h5 class="card-title">{{ i.district }}</h5>
             <p class="card-text">{{ i.text }}</p>
@@ -26,10 +27,11 @@
     </div>
 </section>
 
-{% for i in districts %}
-{{ i.district }}
-{{ i.image }}
-{{ i.text }}
-{% endfor %}
+<!--<h1>Ниже будет информация по областям страны</h1>-->
+<!--{% for i in districts %}-->
+<!--{{ i.district }}<br>-->
+<!--{{ i.image }}<br>-->
+<!--{{ i.text }}<br>-->
+<!--{% endfor %}-->
 
 {% endblock content %}

@@ -1,10 +1,10 @@
 from django.views.generic import ListView
 from django.shortcuts import render
 
-from guide.models import News
+from guide.models import News, Districts
 
 
-class ListObjectsView(ListView):
+class NewsView(ListView):
     model = News
     template_name = 'base.html'
     context_object_name = 'news'
@@ -14,5 +14,13 @@ def about_view(request):
     return render(request, 'about.html')
 
 
+# class WhatToWatchView(ListView):
+#     model = Districts
+#     print('class watsup?')
+#     template_name = 'what-to-watch.html'
+#     context_object_name = 'districts'
+
+
 def what_to_watch_view(request):
-    return render(request, 'what-to-watch.html')
+    districts = Districts.objects.all()
+    return render(request, 'what-to-watch.html', context={'districts': districts})
