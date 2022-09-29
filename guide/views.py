@@ -4,10 +4,15 @@ from django.shortcuts import render
 from guide.models import News, Districts
 
 
-class NewsView(ListView):
-    model = News
-    template_name = 'base.html'
-    context_object_name = 'news'
+# class NewsView(ListView):
+#     model = News
+#     template_name = 'base.html'
+#     context_object_name = 'news'
+
+
+def news_view(request):
+    news = News.objects.all().order_by('-date')
+    return render(request, 'main.html', context={'news': news})
 
 
 def about_view(request):
