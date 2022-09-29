@@ -1,5 +1,5 @@
 from django.urls import path
-from guide.views import news_view, about_view, what_to_watch_view
+from guide.views import news_view, about_view, what_to_watch_view, towns_view
 
 urlpatterns = [
     # path('', NewsView.as_view()),
@@ -7,4 +7,5 @@ urlpatterns = [
     path('about/', about_view),
     # path('what-to-watch/', WhatToWatchView.as_view()),
     path('what-to-watch/', what_to_watch_view),
+    path('towns/', towns_view),
 ]

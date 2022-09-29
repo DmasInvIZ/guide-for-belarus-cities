@@ -2,23 +2,17 @@
 {% load static %}
 
 {% block title %}
-    <title> Что посмотреть </title>
+    <title>Гродненская область</title>
 {% endblock title %}
-
-{% block nav1 %}
-        <li class="nav-item">
-          <a class="nav-link disabled" href="/what-to-watch">Что посмотреть</a>
-        </li>
-{% endblock nav1 %}
 
 {% block content %}
 <section>
     <div class="container-sm">
-        {% for i in districts %}
+        {% for i in towns %}
         <div class="card mb-2">
           <img src="{{ i.image }}" class="card-img-top" alt="Photo">
           <div class="card-body">
-            <h5 class="card-title">{{ i.district }}</h5>
+            <h5 class="card-title">{{ i.town }}</h5>
             <p class="card-text">{{ i.text }}</p>
           </div>
         </div>
