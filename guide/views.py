@@ -22,13 +22,13 @@ def about_view(request):
 # class WhatToWatchView(ListView):
 #     model = Districts
 #     print('class watsup?')
-#     template_name = 'what-to-watch.html'
+#     template_name = 'districts.html'
 #     context_object_name = 'districts'
 
 
 def what_to_watch_view(request):
     districts = Districts.objects.all()
-    return render(request, 'what-to-watch.html', context={'districts': districts})
+    return render(request, 'districts.html', context={'districts': districts})
 
 
 def towns_view(request):

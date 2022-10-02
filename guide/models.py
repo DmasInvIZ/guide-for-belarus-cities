@@ -2,7 +2,7 @@ from django.db import models
 
 
 class News(models.Model):
-    author = models.CharField(max_length=20, default='User', null=True, blank=True)
+    author = models.CharField(max_length=20, default='Admin', null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
     title = models.CharField(max_length=500)
     news = models.TextField(max_length=2000)
@@ -17,6 +17,15 @@ class News(models.Model):
 
 
 class Towns(models.Model):
+    # region = [
+    #     ('brest_district', 'Брестская область'),
+    #     ('vitebsk_district', 'Витебская область'),
+    #     ('gomel_district', 'Гомельская область'),
+    #     ('grodno_district', 'Гродненская область'),
+    #     ('minsk_district', 'Минская область'),
+    #     ('mogilev_district', 'Могилевская область'),
+    # ]
+    # area = models.CharField(max_length=16, choices=region, default='brest_district')
     town = models.CharField(max_length=50)
     image = models.ImageField(upload_to='static/cities', null=True, blank=True)
     text = models.TextField(max_length=5000)
