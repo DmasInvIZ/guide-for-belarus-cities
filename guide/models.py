@@ -17,18 +17,18 @@ class News(models.Model):
 
 
 class Towns(models.Model):
-    # region = [
-    #     ('brest_district', 'Брестская область'),
-    #     ('vitebsk_district', 'Витебская область'),
-    #     ('gomel_district', 'Гомельская область'),
-    #     ('grodno_district', 'Гродненская область'),
-    #     ('minsk_district', 'Минская область'),
-    #     ('mogilev_district', 'Могилевская область'),
-    # ]
-    # area = models.CharField(max_length=16, choices=region, default='brest_district')
-    town = models.CharField(max_length=50)
-    image = models.ImageField(upload_to='static/cities', null=True, blank=True)
-    text = models.TextField(max_length=5000)
+    CATEGORY_CHOICES = [
+        ('brest_district', 'Брестская область'),
+        ('vitebsk_district', 'Витебская область'),
+        ('gomel_district', 'Гомельская область'),
+        ('grodno_district', 'Гродненская область'),
+        ('minsk_district', 'Минская область'),
+        ('mogilev_district', 'Могилевская область'),
+    ]
+    area = models.CharField('Выберите область', max_length=50, choices=CATEGORY_CHOICES, default='')
+    town = models.CharField('Город', max_length=50)
+    image = models.ImageField('Фотография', upload_to='static/cities', null=True, blank=True)
+    text = models.TextField('Описание', max_length=5000)
 
     def __str__(self):
         return self.town
