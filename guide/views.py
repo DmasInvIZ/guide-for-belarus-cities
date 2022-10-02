@@ -1,5 +1,7 @@
-from django.views.generic import ListView
+from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.shortcuts import render
+# from .forms import SearchForm
+# from haystack.query import SearchQuerySet
 
 from guide.models import News, Districts, Towns
 
@@ -34,3 +36,24 @@ def what_to_watch_view(request):
 def towns_view(request):
     towns = Towns.objects.all()
     return render(request, 'towns.html', context={'towns': towns})
+
+
+###-------поиск по сайту------###
+
+
+# def post_search(request):
+#     form = SearchForm()
+#     if 'query' in request.GET:
+#         form = SearchForm(request.GET)
+#         if form.is_valid():
+#             cd = form.cleaned_data
+#             results = SearchQuerySet().models(Districts).filter(content=cd['query']).load_all()
+#             # count total results
+#             total_results = results.count()
+#     return render(request,
+#                   'search.html',
+#                   {'form': form,
+#                    'cd': cd,
+#                    'results': results,
+#                    'total_results': total_results})
+#

@@ -21,39 +21,3 @@
     </div>
 </section>
 {% endblock content %}
-
-{% block footer %}
-<div class="footer">
-    <div class="card">
-          <div class="card-body">
-                <div class="row align-items-end">
-                    <div class="col">
-                        {% block info %}
-                      <center>
-                          <td style="height:200px; vertical-align:baseline;">Информация:</td><br>
-                          <a href="/about/">О проекте</a>
-                      </center>
-                        {% endblock info %}
-                    </div>
-                    <div class="col">
-                        {% block contacts %}
-                      <center>
-                          <td style="height:200px; vertical-align:top;">Контакты:</td><br>
-                          Телефон - +375 (29) 568-93-21<br>
-                          Email - inviz1806@gmail.com
-                      </center>
-                        {% endblock contacts %}
-                    </div>
-                    <div class="col">
-                        {% block authors %}
-                      <center>
-                          <td style="height:200px; vertical-align:top;">Авторы:</td><br>
-                          vk.com - <a href="https://vk.com/link_viscount/">Коваленя Дмитрий</a>
-                      </center>
-                        {% endblock authors %}
-                    </div>
-                </div>
-          </div>
-    </div>
-</div>
-{% endblock footer %}
