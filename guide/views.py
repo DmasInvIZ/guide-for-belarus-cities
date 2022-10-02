@@ -33,9 +33,14 @@ def what_to_watch_view(request):
     return render(request, 'districts.html', context={'districts': districts})
 
 
-def towns_view(request):
-    towns = Towns.objects.all()
+def towns_view(request, pk): ######################################################################
+    towns = Towns.objects.get(district_id=pk)
     return render(request, 'towns.html', context={'towns': towns})
+
+
+def district_view(request, pk):
+    towns = Towns.objects.filter(district_id=pk)
+    return render(request, 'district.html', context={'towns': towns})
 
 
 ###-------поиск по сайту------###
