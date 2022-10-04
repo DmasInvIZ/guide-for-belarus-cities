@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-    <title> Области </title>
+    <title> Области страны </title>
 {% endblock title %}
 
 {% block nav1 %}
@@ -21,7 +21,7 @@
               <img src="{{ i.image }}" class="card-img-top" alt="Photo">
               <div class="card-body">
                 <h5 class="card-title">
-                    <a href="/towns/{{ i.id }}">{{ i.town }}</a>
+                    <a href="/town/{{ i.id }}">{{ i.town }}</a>
                 </h5>
                 <p class="card-text">{{ i.text }}</p>
               </div>

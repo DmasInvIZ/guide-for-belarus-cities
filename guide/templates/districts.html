@@ -12,6 +12,7 @@
 {% endblock nav1 %}
 
 {% block content %}
+
 <section>
     <div class="container-sm">
         {% if districts %}
@@ -20,7 +21,7 @@
               <img src="{{ i.image }}" class="card-img-top" alt="Photo">
               <div class="card-body">
                 <h5 class="card-title">
-                    <a href="/districts/{{ i.id }}">{{ i.district }}</a>
+                    <a href="/district/{{ i.id }}">{{ i.district }}</a>
                 </h5>
                 <p class="card-text">{{ i.text }}</p>
               </div>
@@ -31,4 +32,5 @@
         {% endif %}
     </div>
 </section>
+
 {% endblock content %}

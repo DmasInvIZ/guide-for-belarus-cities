@@ -41,5 +41,3 @@ class Towns(models.Model):
     class Meta:
         verbose_name = "Город"
         verbose_name_plural = "Города"
-
-

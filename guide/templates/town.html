@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title> Город </title>
+{% endblock title %}
+
+{% block nav1 %}
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/what-to-watch">Что посмотреть</a>
+        </li>
+{% endblock nav1 %}
+
+{% block content %}
+
+<section>
+    <div class="container-sm">
+        <div class="card mb-2">
+          <img src="{{ town.image }}" class="card-img-top" alt="Photo">
+          <div class="card-body">
+            <h5 class="card-title">{{ town.town }}</h5>
+            <p class="card-text">{{ town.text }}</p>
+          </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}
