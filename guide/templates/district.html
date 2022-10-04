@@ -16,14 +16,14 @@
 <section>
     <div class="container-sm">
         {% if towns %}
-            {% for i in towns %}
+            {% for town in towns %}
             <div class="card mb-2">
-              <img src="{{ i.image }}" class="card-img-top" alt="Photo">
+              <img src="{{ town.image }}" class="card-img-top" alt="Photo">
               <div class="card-body">
                 <h5 class="card-title">
-                    <a href="/town/{{ i.id }}">{{ i.town }}</a>
+                    <a href="/town/{{ town.id }}">{{ town.name }}</a>
                 </h5>
-                <p class="card-text">{{ i.text }}</p>
+                <p class="card-text">{{ town.short_info }}</p>
               </div>
             </div>
             {% endfor %}

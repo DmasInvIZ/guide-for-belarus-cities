@@ -18,10 +18,10 @@
         {% if districts %}
             {% for distr in districts %}
             <div class="card mb-2">
-              <img src="{{ i.image }}" class="card-img-top" alt="Photo">
+              <img src="{{ distr.image }}" class="card-img-top" alt="Photo">
               <div class="card-body">
                 <h5 class="card-title">
-                    <a href="/district/{{ i.id }}">{{ distr.name }}</a>
+                    <a href="/district/{{ distr.id }}">{{ distr.name }}</a>
                 </h5>
                 <p class="card-text">{{ distr.desk }}</p>
               </div>
