@@ -3,6 +3,7 @@ from django.shortcuts import render
 # from .forms import SearchForm
 # from haystack.query import SearchQuerySet
 
+
 from guide.models import News, Districts, Towns
 
 
