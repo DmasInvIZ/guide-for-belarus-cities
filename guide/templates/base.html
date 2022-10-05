@@ -44,9 +44,14 @@
           {% endblock nav3 %}
           {% block nav4 %}
         <li class="nav-item">
-          <a class="nav-link" href="/admin">Вход для администрации</a>
+          <a class="nav-link" href="/register">Регистрация</a>
         </li>
           {% endblock nav4 %}
+          {% block nav5 %}
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">Вход для администрации</a>
+        </li>
+          {% endblock nav5 %}
       </ul>
       <form class="d-flex" role="search">
         <input class="form-control me-2" type="search" placeholder="Что ищем?..." aria-label="Search">
