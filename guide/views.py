@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.shortcuts import render
 from .models import About
@@ -56,6 +57,17 @@ def town_view(request, pk): ####################################################
 def district_view(request, pk):
     towns = Towns.objects.filter(district_id=pk)
     return render(request, 'district.html', context={'towns': towns})
+
+
+# поиск по городам
+class SearchResultsView(ListView):
+    model = Towns
+    template_name = 'search_results.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        object_list = Towns.objects.filter(Q(name__icontains=query))
+        return object_list
 
 
 ###-------поиск по сайту------###

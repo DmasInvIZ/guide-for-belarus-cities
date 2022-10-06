@@ -1,5 +1,5 @@
 from django.urls import path
-from guide.views import news_view, AboutView, what_to_watch_view, town_view, district_view
+from guide.views import news_view, AboutView, what_to_watch_view, town_view, district_view, SearchResultsView
 from django.conf import settings
 
 urlpatterns = [
@@ -11,4 +11,5 @@ urlpatterns = [
     path('districts/', what_to_watch_view),     # вывод всех областей страны из бд
     path('district/<int:pk>', district_view),   # вывод всех внесенных городов в данную область страны
     path('town/<int:pk>', town_view),          # вывод конкретного города по запросу
+    path('search/', SearchResultsView.as_view(), name='search_results'),
 ]
