@@ -5,10 +5,24 @@
 {% endblock title %}
 
 {% block content %}
+
 <center>
-    <h1>О проекте</h1><br>
-    <h3>Вы на странице описывающей проект, она в разработке</h3>
+    <h1>Блог проекта</h1><br>
+    <h4>Здесь автор публикует новости процесса разработки и собственные мысли.</h4><br>
 </center>
+
+{% for i in posts %}
+
+<div class="container">
+    <div class="card mb-2">
+        <div class="card-body">
+            <p class="card-text">{{ i.post }}</p>
+            <p class="card-text"><small class="text-muted">{{ i.date }}</small></p>
+        </div>
+    </div>
+</div>
+
+{% endfor %}
 {% endblock content %}
 
 {% block info %}

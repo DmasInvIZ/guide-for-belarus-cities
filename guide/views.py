@@ -1,5 +1,7 @@
+from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.shortcuts import render
+from .models import About
 # from .forms import SearchForm
 # from haystack.query import SearchQuerySet
 
@@ -19,9 +21,16 @@ def news_view(request):
     return render(request, 'main.html', context={'news': news})
 
 
+class AboutView(ListView):
+    model = About
+    template_name = 'about.html'
+    context_object_name = 'posts'
+    ordering = '-date'
+
+
 # страница "о проекте"
-def about_view(request):
-    return render(request, 'about.html')
+# def about_view(request):
+#     return render(request, 'about.html')
 
 
 # class WhatToWatchView(ListView):
