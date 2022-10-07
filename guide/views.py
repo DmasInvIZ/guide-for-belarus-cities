@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.shortcuts import render
 from .models import About
-
+from django.utils.decorators import method_decorator
 
 from guide.models import News, Districts, Towns
 
@@ -21,6 +21,7 @@ def news_view(request):
 
 
 # страница "О проекте"
+@method_decorator(login_required, name='dispatch')
 class AboutView(ListView):
     model = About
     template_name = 'about.html'
@@ -47,6 +48,7 @@ def what_to_watch_view(request):
 
 
 # выводим город по запросу
+@login_required
 def town_view(request, pk):
     town = Towns.objects.get(id=pk)
     return render(request, 'town.html', {'town': town})
