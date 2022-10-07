@@ -5,16 +5,19 @@
 {% endblock title %}
 
 {% block content %}
-    <div class="nav-right">
-          <a href="{% url 'new_post' %}">+ New Blog Post</a>
-        </div>
+
+<div class="nav-right">
+    <a href="{% url 'new_post' %}">Добавить новый пост</a>
+</div>
+
 {% for post in posts %}
 <div class="container">
     <div class="card mb-2">
         <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.body }}</p>
-            <p class="card-text"><small class="text-muted">{{ post.date }} | {{ post.author }}</small></p>
+            <p class="card-text"><small class="text-muted">{{ post.date }} | {{ post.author }}</a></small></p>
+            <p class="card-text"><small class="text-muted"><a href='{% url "post_detail" post.pk %}'>Читать полностью</a> <br></small></p>
         </div>
     </div>
 </div>
