@@ -1,6 +1,5 @@
 from django.urls import path
 from guide.views import news_view, AboutView, what_to_watch_view, town_view, district_view, SearchResultsView
-from django.conf import settings
 
 urlpatterns = [
     # path('', NewsView.as_view()),

@@ -3,8 +3,6 @@ from django.db.models import Q
 from django.views.generic import ListView, CreateView, DeleteView, UpdateView
 from django.shortcuts import render
 from .models import About
-# from .forms import SearchForm
-# from haystack.query import SearchQuerySet
 
 
 from guide.models import News, Districts, Towns
@@ -22,6 +20,7 @@ def news_view(request):
     return render(request, 'main.html', context={'news': news})
 
 
+# страница "О проекте"
 class AboutView(ListView):
     model = About
     template_name = 'about.html'
@@ -48,7 +47,7 @@ def what_to_watch_view(request):
 
 
 # выводим город по запросу
-def town_view(request, pk): ######################################################################
+def town_view(request, pk):
     town = Towns.objects.get(id=pk)
     return render(request, 'town.html', {'town': town})
 
@@ -68,23 +67,3 @@ class SearchResultsView(ListView):
         query = self.request.GET.get('q')
         object_list = Towns.objects.filter(Q(name__icontains=query))
         return object_list
-
-
-###-------поиск по сайту------###
-
-# def post_search(request):
-#     form = SearchForm()
-#     if 'query' in request.GET:
-#         form = SearchForm(request.GET)
-#         if form.is_valid():
-#             cd = form.cleaned_data
-#             results = SearchQuerySet().models(Districts).filter(content=cd['query']).load_all()
-#             # count total results
-#             total_results = results.count()
-#     return render(request,
-#                   'search.html',
-#                   {'form': form,
-#                    'cd': cd,
-#                    'results': results,
-#                    'total_results': total_results})
-#

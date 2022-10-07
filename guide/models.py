@@ -28,6 +28,11 @@ class Districts(models.Model):
         verbose_name = "Область"
         verbose_name_plural = "Области"
 
+    @property
+    def photo_url(self):
+        if self.photo and hasattr(self.photo, 'url'):
+            return self.photo.url
+
 
 class Towns(models.Model):
     name = models.CharField('Город', max_length=50)  # название города
@@ -44,6 +49,11 @@ class Towns(models.Model):
     class Meta:
         verbose_name = "Город"
         verbose_name_plural = "Города"
+
+    @property
+    def photo_url(self):
+        if self.photo and hasattr(self.photo, 'url'):
+            return self.photo.url
 
 
 class About(models.Model):
