@@ -1,7 +1,6 @@
 from django.urls import path
 from .views import BlogListView, BlogDetailView, BlogCreateView, BlogUpdateView, BlogDeleteView
-from users import views as user_views
-from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('post/<int:pk>/delete/', BlogDeleteView.as_view(), name='post_delete'),  # удаление поста

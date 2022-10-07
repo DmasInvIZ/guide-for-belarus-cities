@@ -1,3 +1,4 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse  # Новый импорт
 
@@ -6,8 +7,9 @@ from core import settings
 
 class Post(models.Model):
     title = models.CharField('Заголовок', max_length=200)
-    author = models.ForeignKey('auth.User', on_delete = models.CASCADE)
+    author = models.CharField('Автор', max_length=200, default='')
     body = models.TextField('Пост')
+    image = models.ImageField('Фотография', upload_to='static/news', null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
