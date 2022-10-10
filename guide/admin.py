@@ -13,8 +13,8 @@ class DistrictsAdmin(admin.ModelAdmin):
 
 
 class TownsAdmin(admin.ModelAdmin):
-    list_display = ('name', 'district', 'short_info', 'full_desk')
-    search_fields = ('name', 'full_desk')
+    list_display = ('name', 'district', 'short_info', 'watch', 'eat', 'sleep')
+    search_fields = ('name',)
 
 
 class AboutAdmin(admin.ModelAdmin):

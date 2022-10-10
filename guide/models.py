@@ -32,11 +32,15 @@ class Districts(models.Model):
 
 class Towns(models.Model):
     name = models.CharField('Город', max_length=50)  # название города
-    image = models.ImageField('Фотография', upload_to='static/cities', null=True, blank=True)
-    short_info = models.TextField('Короткое описание', max_length=2000, default='', null=True, blank=True) \
+    image = models.ImageField('Фотография для превью', upload_to='static/cities', null=True, blank=True)
+    short_info = models.TextField('Короткое описание, для превью', max_length=2000, default='', null=True, blank=True) \
         # короткое описание города, для страницы с общим списком городов
-    full_desk = RichTextField('Полное описание', max_length=5000, default='', null=True, blank=True) \
-        # Полное описание города, для страницы с детальной информацией
+    watch = RichTextField('Описание достопримечательностей', max_length=5000, default='', null=True, blank=True) \
+        # Что посмотреть
+    eat = RichTextField('Описание мест общепита, где можно перекусить', default='', null=True, blank=True) \
+        # где поесть
+    sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='', null=True, blank=True) \
+        # где поспать
     district = models.ForeignKey(Districts, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
