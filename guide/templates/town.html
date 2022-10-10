@@ -8,11 +8,12 @@
 {% block content %}
 
 <section>
+
     <div class="container-sm">
         <div class="card mb-2">
-          <img src="{{ town.image }}" class="card-img-top" alt="Photo">
+          <img src="/{{ town.image }}" class="card-img-top" alt="Photo">
           <div class="card-body">
-            <p class="card-text">{{ town.full_desk }}</p>
+            <p class="card-text">{{ town.full_desk|safe }}</p>
           </div>
         </div>
     </div>

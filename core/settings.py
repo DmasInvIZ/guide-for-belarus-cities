@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'users',
     'crispy_forms',
     'blog',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
@@ -125,9 +126,9 @@ STATICFILES_DIRS = [
     BASE_DIR / "static",
 ]
 
-MEDIA_DIR = os.path.join(BASE_DIR, 'static')
-MEDIA_ROOT = MEDIA_DIR
-MEDIA_URL = '/media/'
+# MEDIA_DIR = os.path.join(BASE_DIR, 'static')
+# MEDIA_ROOT = MEDIA_DIR
+# MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
@@ -136,3 +137,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
 LOGIN_URL = 'login'
+
+MEDIA_URL = '/media/'
+CKEDITOR_UPLOAD_PATH = "uploads/"

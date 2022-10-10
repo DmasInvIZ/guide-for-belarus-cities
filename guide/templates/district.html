@@ -12,7 +12,7 @@
         {% if towns %}
             {% for town in towns %}
             <div class="card mb-2">
-              <img src="{{ town.image }}" class="card-img-top" alt="Photo">
+              <img src="/{{ town.image }}" class="card-img-top" alt="Photo">
               <div class="card-body">
                 <h5 class="card-title">
                     <a href="/town/{{ town.id }}">{{ town.name }}</a>
