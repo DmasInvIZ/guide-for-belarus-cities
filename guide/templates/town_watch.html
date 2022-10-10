@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title> Город </title>
+{% endblock title %}
+
+{% block nav1 %}
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/districts">Что посмотреть</a>
+        </li>
+{% endblock nav1 %}
+
+{% block content %}
+
+<section>
+
+    <div class="container-sm">
+        <div class="card mb-2">
+          <img src="/{{ town_watch.image }}" class="card-img-top" alt="Photo">
+          <div class="card-body">
+            <p class="card-text">{{ town_watch.watch|safe }}</p>
+          </div>
+        </div>
+    </div>
+</section>
+
+{% endblock content %}

@@ -5,6 +5,12 @@
     <title> Области страны </title>
 {% endblock title %}
 
+{% block nav1 %}
+        <li class="nav-item">
+          <a class="nav-link disabled" href="/districts">Что посмотреть</a>
+        </li>
+{% endblock nav1 %}
+
 {% block content %}
 
 <section>
@@ -15,7 +21,7 @@
               <img src="/{{ town.image }}" class="card-img-top" alt="Photo">
               <div class="card-body">
                 <h5 class="card-title">
-                    <a href="/town/{{ town.id }}">{{ town.name }}</a>
+                    <a href="/town_watch/{{ town.id }}">{{ town.name }}</a>
                 </h5>
                 <p class="card-text">{{ town.short_info }}</p>
               </div>

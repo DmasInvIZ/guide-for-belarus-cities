@@ -35,12 +35,12 @@
           {% endblock nav1 %}
           {% block nav2 %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Где поесть</a>
+          <a class="nav-link" href="/town_eat/{{town_watch.id}}">Где поесть</a>
         </li>
           {% endblock nav2 %}
           {% block nav3 %}
         <li class="nav-item">
-          <a class="nav-link" href="#">Где переночевать</a>
+          <a class="nav-link" href="/town_sleep/{{town_watch.id}}">Где переночевать</a>
         </li>
           {% endblock nav3 %}
           {% block nav4 %}
@@ -68,7 +68,7 @@
       </ul>
 
       <form class="d-flex" action="{% url 'search_results' %}" role="search" method="get">
-        <input class="form-control me-2" type="search" placeholder="Что ищем?..." aria-label="Search" name="q">
+        <input class="form-control me-2" type="search" placeholder="Введите город" aria-label="Search" name="q">
         <button class="btn btn-outline-success" type="submit">Искать</button>
       </form>
 
