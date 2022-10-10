@@ -43,7 +43,7 @@ class AboutView(ListView):
 
 # страница со списком внесенных областей страны
 def what_to_watch_view(request):
-    districts = Districts.objects.all()
+    districts = Districts.objects.all().order_by('name')
     return render(request, 'districts.html', context={'districts': districts})
 
 
@@ -56,7 +56,7 @@ def town_view(request, pk):
 
 # выводим список внесенных городов в запрошеной области
 def district_view(request, pk):
-    towns = Towns.objects.filter(district_id=pk)
+    towns = Towns.objects.filter(district_id=pk).order_by('name')
     return render(request, 'district.html', context={'towns': towns})
 
 
