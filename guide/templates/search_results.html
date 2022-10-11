@@ -6,13 +6,19 @@
 {% endblock title %}
 
 {% block content %}
-<h1>Вот что нашлось</h1>
 
-<ul>
-  {% for town in object_list %}
-    <li>
-      <a href="/town/{{ town.id }}">{{ town.name }}</a>
-    </li>
-  {% endfor %}
-</ul>
+<section>
+    {% for town in object_list %}
+    <div class="container-sm">
+        <h1>Вот что нашлось</h1>
+        <a class="link" href="/districts"><-- К областям</a>
+        <div class="card mb-2">
+          <div class="card-body">
+            <p class="card-text"><a href="/town_watch/{{ town.id }}">{{ town.name }}</a></p>
+          </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+
 {% endblock content %}
