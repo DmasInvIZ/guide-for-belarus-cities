@@ -14,7 +14,7 @@
     <div class="card mb-2">
         <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
-            <p class="card-text">{{ post.body }}</p>
+            <p class="card-text">{{ post.body|safe }}</p>
             <p class="card-text"><small class="text-muted">{{ post.author }} | {{ post.date }}</a></small></p>
             <p class="card-text"><small class="text-muted"><a href='{% url "post_detail" post.pk %}'>Читать полностью</a> <br></small></p>
         </div>

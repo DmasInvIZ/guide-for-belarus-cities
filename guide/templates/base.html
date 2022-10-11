@@ -53,6 +53,7 @@
           <a class="nav-link" href="/admin">Вход для администрации</a>
         </li>
           {% endblock nav5 %}
+          {% block nav6 %}
         <li class="nav-item">
           {% if user.is_authenticated %}
             <li class="nav-item">
@@ -65,6 +66,7 @@
             	<a class="nav-item nav-link" href="/login/">Вход</a>
           	{% endif %}
         </li>
+          {% endblock nav6 %}
       </ul>
 
       <form class="d-flex" action="{% url 'search_results' %}" role="search" method="get">
