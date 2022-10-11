@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 from django.urls import reverse
 
@@ -5,14 +6,14 @@ from django.urls import reverse
 class Post(models.Model):
     title = models.CharField('Заголовок', max_length=200)
     author = models.CharField('Автор', max_length=200, default='')
-    body = models.TextField('Пост')
-    image = models.ImageField('Фотография', upload_to='static/news', null=True, blank=True)
+    body = RichTextField('Пост', blank=True, null=True)  # вставка для красивого оформления поста
+    image = models.ImageField('Фотография', upload_to='static/blog', null=True, blank=True)
     date = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):  # Тут мы создали новый метод
+    def get_absolute_url(self):
         return reverse('post_detail', args=[str(self.id)])
 
     class Meta:

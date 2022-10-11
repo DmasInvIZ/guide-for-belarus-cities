@@ -7,12 +7,14 @@
 {% block content %}
 <div class="container">
     <h1>Редактировать пост</h1>
-    <form action="" method="post">{% csrf_token %}
-            {{ form.as_p }}
-        <input type="submit" value="Update" />
+<form method="POST" class="post-form">{% csrf_token %}
+        {{ form.text | safe }}
+        {{ form.media }}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
         <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
             <i class="icon-remove icon-large"></i>Отмена
         </button>
-    </form>
 </div>
 {% endblock content %}
