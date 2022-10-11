@@ -5,11 +5,21 @@
     <title> Город </title>
 {% endblock title %}
 
-{% block nav1 %}
+          {% block nav1 %}
         <li class="nav-item">
-          <a class="nav-link disabled" href="/districts">Что посмотреть</a>
+          <a class="nav-link disabled" href="">Что посмотреть</a>
         </li>
-{% endblock nav1 %}
+          {% endblock nav1 %}
+          {% block nav2 %}
+        <li class="nav-item">
+          <a class="nav-link" href="/town_eat/{{town_watch.id}}">Где поесть</a>
+        </li>
+          {% endblock nav2 %}
+          {% block nav3 %}
+        <li class="nav-item">
+          <a class="nav-link" href="/town_sleep/{{town_watch.id}}">Где переночевать</a>
+        </li>
+          {% endblock nav3 %}
 
 {% block content %}
 
