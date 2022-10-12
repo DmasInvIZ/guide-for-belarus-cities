@@ -29,6 +29,7 @@ class BlogCreateView(CreateView):
 
 
 # редактирование поста
+@method_decorator(login_required, name='dispatch')  # только для авторизованных
 class BlogUpdateView(UpdateView):
     model = Post
     template_name = 'post_edit.html'
@@ -36,6 +37,7 @@ class BlogUpdateView(UpdateView):
 
 
 # удаление поста
+@method_decorator(login_required, name='dispatch')  # только для авторизованных
 class BlogDeleteView(DeleteView):
     model = Post
     template_name = 'post_delete.html'
