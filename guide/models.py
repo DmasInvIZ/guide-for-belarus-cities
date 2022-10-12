@@ -1,5 +1,7 @@
+from django.contrib.auth.models import User
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 
 class News(models.Model):
@@ -51,8 +53,29 @@ class Towns(models.Model):
         verbose_name_plural = "Города"
 
 
+# предложения по публикациям от пользователей
 class UserTowns(models.Model):
-    pass
+    author = models.CharField('Автор', max_length=20, default='', null=True, blank=True)
+    town = models.CharField('Город', max_length=50, default='')
+    district = models.ForeignKey(Districts, on_delete=models.CASCADE, default='')
+    watch = RichTextField('Описание достопримечательностей', max_length=5000, default='', null=True, blank=True) \
+        # Что посмотреть
+    eat = RichTextField('Описание мест общепита, где можно перекусить', default='', null=True, blank=True) \
+        # где поесть
+    sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='', null=True,
+                          blank=True) \
+        # где поспать
+    is_published = models.BooleanField(default='False')
+
+    def get_absolute_url(self):
+        return reverse('suggest_success', args=[str(self.id)])
+
+    def __str__(self):
+        return self.town
+
+    class Meta:
+        verbose_name = "Публикации пользователей"
+        verbose_name_plural = "Публикации пользователей"
 
 
 class About(models.Model):

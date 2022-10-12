@@ -1,11 +1,15 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.views.generic import ListView
-from django.shortcuts import render
-from .models import About
+from django.views.generic import ListView, CreateView, DetailView
+from django.shortcuts import render, redirect
+from .models import About, UserTowns
 from django.utils.decorators import method_decorator
 
 from guide.models import News, Districts, Towns
+
+from .forms import SuggestForm
+
+from django.contrib import messages
 
 
 # class NewsView(ListView):
@@ -72,6 +76,33 @@ def town_sleep_view(request, pk):
 def district_view(request, pk):
     towns = Towns.objects.filter(district_id=pk).order_by('name')
     return render(request, 'district.html', context={'towns': towns})
+
+
+# публикация инфы о городах от пользователей
+# @login_required
+def publish_suggest_view(request):
+    if request.method == 'POST':
+        form = SuggestForm(request.POST)
+        if form.is_valid():
+            form.save()
+            # messages.success(request, 'Отлично, ваша публикация отправлена на модерацию')
+            return redirect('/suggest_success')
+    else:
+        form = SuggestForm()
+    return render(request, 'suggest.html', {'form': form})
+
+
+# публикация инфы о городах от пользователей
+# @login_required
+# def publish_suggest_view(request):
+#     suggestform = SuggestForm()
+#     return render(request, "suggest.html", {"form": suggestform})
+
+
+# перенаправлене после отправки формы с предложением новости
+# @method_decorator(login_required, name='dispatch')  # только для авторизованных
+def suggest_success_view(request):
+    return render(request, 'suggest_success.html')
 
 
 # поиск по городам

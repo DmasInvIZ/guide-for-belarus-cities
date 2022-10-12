@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import News, Towns, Districts, About
+from .models import News, Towns, Districts, About, UserTowns
 
 
 class NewsAdmin(admin.ModelAdmin):
@@ -22,7 +22,13 @@ class AboutAdmin(admin.ModelAdmin):
     search_fields = ('post',)
 
 
+class UserTownsAdmin(admin.ModelAdmin):
+    list_display = ('watch', 'eat', 'sleep')
+    search_fields = ('town', 'author', 'watch', 'eat', 'sleep', 'is_published')
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(Districts, DistrictsAdmin)
 admin.site.register(Towns, TownsAdmin)
 admin.site.register(About, AboutAdmin)
+admin.site.register(UserTowns, UserTownsAdmin)
