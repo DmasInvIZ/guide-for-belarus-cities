@@ -33,6 +33,15 @@
           </div>
         </div>
     </div>
+    {% for pub in user_pub_town_watch %}
+        <div class="container-sm">
+        <div class="card mb-2">
+          <div class="card-body">
+            <p class="card-text">{{ pub.watch|safe }}</p>
+          </div>
+        </div>
+        </div>
+    {% endfor %}
 </section>
 
 {% endblock content %}

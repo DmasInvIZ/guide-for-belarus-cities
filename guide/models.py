@@ -34,6 +34,7 @@ class Districts(models.Model):
 
 class Towns(models.Model):
     name = models.CharField('Город', max_length=50)  # название города
+    district = models.ForeignKey(Districts, on_delete=models.CASCADE, default=1)  # название области
     image = models.ImageField('Фотография для превью', upload_to='static/cities', null=True, blank=True)
     short_info = models.TextField('Короткое описание, для превью', max_length=2000, default='', null=True, blank=True) \
         # короткое описание города, для страницы с общим списком городов
@@ -43,7 +44,6 @@ class Towns(models.Model):
         # где поесть
     sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='', null=True, blank=True) \
         # где поспать
-    district = models.ForeignKey(Districts, on_delete=models.CASCADE, default=1)
 
     def __str__(self):
         return self.name
@@ -67,8 +67,8 @@ class UserTowns(models.Model):
         # где поспать
     is_published = models.BooleanField(default='False')
 
-    def get_absolute_url(self):
-        return reverse('suggest_success', args=[str(self.id)])
+    # def get_absolute_url(self):
+    #     return reverse('towns', args=[str(self.id)])
 
     def __str__(self):
         return self.town

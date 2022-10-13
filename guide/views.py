@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.views.generic import ListView, CreateView, DetailView
+from django.views.generic import ListView
 from django.shortcuts import render, redirect
 from .models import About, UserTowns
 from django.utils.decorators import method_decorator
@@ -10,12 +10,6 @@ from guide.models import News, Districts, Towns
 from .forms import SuggestForm
 
 from django.contrib import messages
-
-
-# class NewsView(ListView):
-#     model = News
-#     template_name = 'base.html'
-#     context_object_name = 'news'
 
 
 # главная страница, на ней новости
@@ -33,22 +27,16 @@ class AboutView(ListView):
     ordering = '-date'
 
 
-# страница "о проекте"
-# def about_view(request):
-#     return render(request, 'about.html')
-
-
-# class WhatToWatchView(ListView):
-#     model = Districts
-#     print('class watsup?')
-#     template_name = 'districts.html'
-#     context_object_name = 'districts'
-
-
 # страница со списком внесенных областей страны
 def what_to_watch_view(request):
     districts = Districts.objects.all().order_by('name')
     return render(request, 'districts.html', context={'districts': districts})
+
+
+# выводим список внесенных городов в запрошенной области
+def district_view(request, pk):
+    towns = Towns.objects.filter(district_id=pk).order_by('name')
+    return render(request, 'district.html', context={'towns': towns})
 
 
 # выводим город по запросу (что посмотреть)
@@ -72,37 +60,39 @@ def town_sleep_view(request, pk):
     return render(request, 'town_sleep.html', {'town_sleep': town})
 
 
-# выводим список внесенных городов в запрошенной области
-def district_view(request, pk):
-    towns = Towns.objects.filter(district_id=pk).order_by('name')
-    return render(request, 'district.html', context={'towns': towns})
-
-
-# публикация инфы о городах от пользователей
-# @login_required
+# страница предложения публикации инфы о городах от пользователей
+@login_required
 def publish_suggest_view(request):
     if request.method == 'POST':
         form = SuggestForm(request.POST)
         if form.is_valid():
             form.save()
-            # messages.success(request, 'Отлично, ваша публикация отправлена на модерацию')
-            return redirect('/suggest_success')
+            messages.success(request, 'Отлично, ваша публикация отправлена на модерацию')
+            return redirect('/suggest')
     else:
         form = SuggestForm()
     return render(request, 'suggest.html', {'form': form})
 
 
-# публикация инфы о городах от пользователей
+# # выводим город по запросу (что посмотреть)  (публикация пользователей)
 # @login_required
-# def publish_suggest_view(request):
-#     suggestform = SuggestForm()
-#     return render(request, "suggest.html", {"form": suggestform})
-
-
-# перенаправлене после отправки формы с предложением новости
-# @method_decorator(login_required, name='dispatch')  # только для авторизованных
-def suggest_success_view(request):
-    return render(request, 'suggest_success.html')
+# def user_town_watch_view(request):
+#     user_town = UserTowns.objects.all()   #.filter('is_published', True)
+#     return render(request, 'town_watch.html', {'pub_town_watch': user_town})
+#
+#
+# # выводим город по запросу (где поесть)  (публикация пользователей)
+# @login_required
+# def user_town_eat_view(request, pk):
+#     user_town = UserTowns.objects.get(id=pk)
+#     return render(request, 'town_eat.html', {'pub_town_eat': user_town})
+#
+#
+# # выводим город по запросу (где поспать)  (публикация пользователей)
+# @login_required
+# def user_town_sleep_view(request, pk):
+#     user_town = UserTowns.objects.get(id=pk)
+#     return render(request, 'town_sleep.html', {'pub_town_sleep': user_town})
 
 
 # поиск по городам
