@@ -56,8 +56,8 @@ class Towns(models.Model):
 # предложения по публикациям от пользователей
 class UserTowns(models.Model):
     author = models.CharField('Автор', max_length=20, default='', null=True, blank=True)
-    town = models.CharField('Город', max_length=50, default='')
-    district = models.ForeignKey(Districts, on_delete=models.CASCADE, default='')
+    town = models.ForeignKey(Towns, on_delete=models.CASCADE, default='')
+    is_published = models.BooleanField('В публикации', default='False')
     watch = RichTextField('Описание достопримечательностей', max_length=5000, default='', null=True, blank=True) \
         # Что посмотреть
     eat = RichTextField('Описание мест общепита, где можно перекусить', default='', null=True, blank=True) \
@@ -65,13 +65,12 @@ class UserTowns(models.Model):
     sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='', null=True,
                           blank=True) \
         # где поспать
-    is_published = models.BooleanField(default='False')
 
     # def get_absolute_url(self):
     #     return reverse('towns', args=[str(self.id)])
 
     def __str__(self):
-        return self.town
+        return str(self.town)
 
     class Meta:
         verbose_name = "Публикации пользователей"

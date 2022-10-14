@@ -7,4 +7,4 @@ class SuggestForm(forms.ModelForm):
 
     class Meta:
         model = UserTowns
-        fields = ['author', 'town', 'district', 'watch', 'eat', 'sleep']
+        fields = ['author', 'town', 'watch', 'eat', 'sleep']

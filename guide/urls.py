@@ -1,6 +1,7 @@
 from django.urls import path
-from guide.views import news_view, AboutView, what_to_watch_view, town_watch_view, district_view, SearchResultsView, \
-    town_sleep_view, town_eat_view, publish_suggest_view
+from guide.views import news_view, AboutView, what_to_watch_view, district_view, SearchResultsView, \
+    town_watch_view, town_eat_view, town_sleep_view, publish_suggest_view  # TownWatchView, TownEatView, TownSleepView
+
 
 urlpatterns = [
     # path('', NewsView.as_view()),
@@ -13,6 +14,9 @@ urlpatterns = [
     path('town_watch/<int:pk>', town_watch_view),          # вывод конкретного города по запросу (что посмотреть)
     path('town_eat/<int:pk>', town_eat_view),          # вывод конкретного города по запросу (где поесть)
     path('town_sleep/<int:pk>', town_sleep_view),          # вывод конкретного города по запросу (где поспать)
+    # path('town_watch/<int:pk>', TownWatchView.as_view(), name='town_watch'),  ####
+    # path('town_eat/<int:pk>', TownEatView.as_view(), name='town_eat'),  #####
+    # path('town_sleep/<int:pk>', TownSleepView.as_view(), name='town_sleep'),  ####
     path('suggest/', publish_suggest_view),
     path('search/', SearchResultsView.as_view(), name='search_results'),
 ]

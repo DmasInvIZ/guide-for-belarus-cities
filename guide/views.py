@@ -40,10 +40,20 @@ def district_view(request, pk):
 
 
 # выводим город по запросу (что посмотреть)
-@login_required
+# @login_required
+# def town_watch_view(request, pk):
+#     town = Towns.objects.get(id=pk)
+#     return render(request, 'town_watch.html', {'town_watch': town})
+
+
 def town_watch_view(request, pk):
     town = Towns.objects.get(id=pk)
-    return render(request, 'town_watch.html', {'town_watch': town})
+    pub_town_watch = UserTowns.objects.filter(town_id=pk).filter(is_published=True)  # ищет запись в таблице предложений от юзеров, город с таким id
+    context = {
+        'town_watch': town,
+        'pub_town_watch': pub_town_watch,
+    }
+    return render(request, 'town_watch.html', context)
 
 
 # выводим город по запросу (где поесть)
@@ -74,25 +84,29 @@ def publish_suggest_view(request):
     return render(request, 'suggest.html', {'form': form})
 
 
-# # выводим город по запросу (что посмотреть)  (публикация пользователей)
-# @login_required
-# def user_town_watch_view(request):
-#     user_town = UserTowns.objects.all()   #.filter('is_published', True)
-#     return render(request, 'town_watch.html', {'pub_town_watch': user_town})
+# # выводим город по запросу (что посмотреть)
+# @method_decorator(login_required, name='dispatch')  # только для авторизованных
+# class TownWatchView(ListView):
+#     model1 = Towns
+#     template_name = 'town_watch.html'
+#     context_object_name = 'town_watch'
+#     context = {}
 #
 #
-# # выводим город по запросу (где поесть)  (публикация пользователей)
-# @login_required
-# def user_town_eat_view(request, pk):
-#     user_town = UserTowns.objects.get(id=pk)
-#     return render(request, 'town_eat.html', {'pub_town_eat': user_town})
+# # выводим город по запросу (где поесть)
+# @method_decorator(login_required, name='dispatch')  # только для авторизованных
+# class TownEatView(ListView):
+#     model1 = Towns
+#     template_name = 'town_eat.html'
+#     context_object_name = 'town_eat'
 #
 #
-# # выводим город по запросу (где поспать)  (публикация пользователей)
-# @login_required
-# def user_town_sleep_view(request, pk):
-#     user_town = UserTowns.objects.get(id=pk)
-#     return render(request, 'town_sleep.html', {'pub_town_sleep': user_town})
+# # выводим город по запросу (где поспать)
+# @method_decorator(login_required, name='dispatch')  # только для авторизованных
+# class TownSleepView(ListView):
+#     model1 = Towns
+#     template_name = 'town_sleep.html'
+#     context_object_name = 'town_sleep'
 
 
 # поиск по городам
