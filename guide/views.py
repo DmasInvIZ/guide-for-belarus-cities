@@ -40,12 +40,6 @@ def district_view(request, pk):
 
 
 # выводим город по запросу (что посмотреть)
-# @login_required
-# def town_watch_view(request, pk):
-#     town = Towns.objects.get(id=pk)
-#     return render(request, 'town_watch.html', {'town_watch': town})
-
-
 @login_required
 def town_watch_view(request, pk):
     town = Towns.objects.get(id=pk)
