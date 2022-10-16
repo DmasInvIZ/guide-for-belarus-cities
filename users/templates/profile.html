@@ -5,6 +5,21 @@
 <title> Профиль пользователя </title>
 {% endblock title %}
 
+{% block nav6 %}
+        <li class="nav-item">
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+                    <a class="nav-link disabled" href="/profile">{{ user.username }}</a>
+                </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="/logout/">Выход</a>
+            </li>
+          	{% else %}
+            	<a class="nav-item nav-link" href="/login/">Вход</a>
+          	{% endif %}
+        </li>
+{% endblock nav6 %}
+
 {% block content %}
 
 <div class="container">

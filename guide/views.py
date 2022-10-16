@@ -27,13 +27,13 @@ class AboutView(ListView):
     ordering = '-date'
 
 
-# страница со списком внесенных областей страны
+# страница со списком всех внесенных областей страны
 def what_to_watch_view(request):
     districts = Districts.objects.all().order_by('name')
     return render(request, 'districts.html', context={'districts': districts})
 
 
-# выводим список внесенных городов в запрошенной области
+# выводим список всех внесенных городов в запрошенной области
 def district_view(request, pk):
     towns = Towns.objects.filter(district_id=pk).order_by('name')
     return render(request, 'district.html', context={'towns': towns})
@@ -65,6 +65,8 @@ def town_eat_view(request, pk):
         'town_eat': town,
         'pub_town_eat': pub_town_eat,
     }
+    # if UserTowns.eat is None:
+    #     return render(request, 'town_eat.html', {'town_eat': town})
     return render(request, 'town_eat.html', context)
 
 
@@ -121,10 +123,13 @@ def publish_suggest_view(request):
 
 # поиск по городам
 class SearchResultsView(ListView):
-    model = Towns
+    model = Towns, Districts
     template_name = 'search_results.html'
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        object_list = Towns.objects.filter(Q(name__icontains=query))
-        return object_list
+        towns_list = Towns.objects.filter(Q(name__icontains=query))
+        # districts_list = Districts.objects.filter(Q(name__icontains=query))
+        # if towns_list and districts_list is None:
+        #     return 'По вашему запросу ничего не найдено'
+        return towns_list # districts_list,
