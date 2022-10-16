@@ -46,6 +46,7 @@ def district_view(request, pk):
 #     return render(request, 'town_watch.html', {'town_watch': town})
 
 
+@login_required
 def town_watch_view(request, pk):
     town = Towns.objects.get(id=pk)
     pub_town_watch = UserTowns.objects.filter(town_id=pk).filter(
