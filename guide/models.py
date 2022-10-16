@@ -77,6 +77,7 @@ class UserTowns(models.Model):
         verbose_name_plural = "Публикации пользователей"
 
 
+# страница "О проекте"
 class About(models.Model):
     post = models.TextField('Описание страницы "О проекте"', max_length=10000, default='')
     date = models.DateTimeField(auto_now=True)  # дата публикации, обновляется при редактировании

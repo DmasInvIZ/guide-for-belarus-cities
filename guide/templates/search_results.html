@@ -20,15 +20,15 @@
         </div>
         {% endfor %}
 
-<!--        {% for distr in districts_list %}-->
-<!--        <h1>Вот что нашлось</h1>-->
-<!--        <a class="link" href="/districts"><&#45;&#45; К областям</a>-->
-<!--        <div class="card mb-2">-->
-<!--          <div class="card-body">-->
-<!--            <p class="card-text"><a href="/district/{{ distr.id }}">{{ distr.name }}</a></p>-->
-<!--          </div>-->
-<!--        </div>-->
-<!--        {% endfor %}-->
+        {% for distr in districts_list %}
+        <h1>Вот что нашлось</h1>
+        <a class="link" href="/districts"><-- К областям</a>
+        <div class="card mb-2">
+          <div class="card-body">
+            <p class="card-text"><a href="/district/{{ distr.id }}">{{ distr.name }}</a></p>
+          </div>
+        </div>
+        {% endfor %}
     </div>
 
 </section>
