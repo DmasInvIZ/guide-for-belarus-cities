@@ -66,9 +66,6 @@ class UserTowns(models.Model):
                           blank=True) \
         # где поспать
 
-    # def get_absolute_url(self):
-    #     return reverse('towns', args=[str(self.id)])
-
     def __str__(self):
         return str(self.town)
 

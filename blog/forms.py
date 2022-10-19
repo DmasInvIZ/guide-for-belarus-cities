@@ -10,5 +10,3 @@ class CreateForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'author', 'body']
-
-

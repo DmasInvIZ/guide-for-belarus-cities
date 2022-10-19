@@ -19,4 +19,5 @@ def register(request):
 
 @login_required
 def profile(request):
-    return render(request, 'profile.html')
+    current_user = request.user
+    return render(request, 'profile.html', {'current_user': current_user})

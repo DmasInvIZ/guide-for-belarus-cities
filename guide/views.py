@@ -94,31 +94,6 @@ def publish_suggest_view(request):
     return render(request, 'suggest.html', {'form': form})
 
 
-# # выводим город по запросу (что посмотреть)
-# @method_decorator(login_required, name='dispatch')  # только для авторизованных
-# class TownWatchView(ListView):
-#     model1 = Towns
-#     template_name = 'town_watch.html'
-#     context_object_name = 'town_watch'
-#     context = {}
-#
-#
-# # выводим город по запросу (где поесть)
-# @method_decorator(login_required, name='dispatch')  # только для авторизованных
-# class TownEatView(ListView):
-#     model1 = Towns
-#     template_name = 'town_eat.html'
-#     context_object_name = 'town_eat'
-#
-#
-# # выводим город по запросу (где поспать)
-# @method_decorator(login_required, name='dispatch')  # только для авторизованных
-# class TownSleepView(ListView):
-#     model1 = Towns
-#     template_name = 'town_sleep.html'
-#     context_object_name = 'town_sleep'
-
-
 # поиск по городам
 class SearchResultsView(ListView):
     model = Towns

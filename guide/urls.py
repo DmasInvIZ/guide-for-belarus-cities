@@ -1,6 +1,6 @@
 from django.urls import path
 from guide.views import news_view, AboutView, what_to_watch_view, district_view, SearchResultsView, \
-    town_watch_view, town_eat_view, town_sleep_view, publish_suggest_view  # TownWatchView, TownEatView, TownSleepView
+    town_watch_view, town_eat_view, town_sleep_view, publish_suggest_view
 
 
 urlpatterns = [

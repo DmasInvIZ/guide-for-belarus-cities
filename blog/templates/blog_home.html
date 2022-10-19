@@ -3,12 +3,11 @@
 {% block title %}
 <title> Пост </title>
 {% endblock title %}
-
 {% block content %}
+{% if posts %}
     <div class="nav-left">
     <a href="{% url 'new_post' %}">Добавить новый пост</a>
 </div>
-{% if posts%}
 {% for post in posts %}
 <div class="container">
     <div class="card mb-2">
@@ -23,7 +22,7 @@
 {% endfor %}
 {% else %}
 <center>
-    <h1>Постов пока нет, будьте первым!</h1>
+    <h1>Постов пока нет, будьте первым! <a href="/blog/new_post/">Начать!</a></h1>
 </center>
 {% endif %}
 {% endblock content %}

@@ -1,4 +1,6 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView
 from django.views.generic.edit import CreateView, DeleteView
@@ -20,12 +22,23 @@ class BlogDetailView(DetailView):
     template_name = 'post_detail.html'
 
 
+# def profile(request):
+#     global current_user
+#     current_user = request.user
+#     return render(request, 'profile.html', {'current_user': current_user})
+
+
 # создание нового поста
 @method_decorator(login_required, name='dispatch')  # только для авторизованных
 class BlogCreateView(CreateView):
     model = Post
     template_name = 'new_post.html'
-    fields = ['title', 'author', 'body']
+
+    def get_author(self):
+        author = self.request.user
+        return author
+
+    fields = ['title', 'author', 'body']  # поля формы
 
 
 # редактирование поста
@@ -33,7 +46,7 @@ class BlogCreateView(CreateView):
 class BlogUpdateView(UpdateView):
     model = Post
     template_name = 'post_edit.html'
-    fields = ['title', 'body']
+    fields = ['title', 'body']  # поля формы
 
 
 # удаление поста
@@ -42,3 +55,5 @@ class BlogDeleteView(DeleteView):
     model = Post
     template_name = 'post_delete.html'
     success_url = reverse_lazy('blog_home')
+
+

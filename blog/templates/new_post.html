@@ -12,10 +12,11 @@
         {{ form.text | safe }}
         {{ form.media }}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
+        <button type="submit" class="save btn btn-default">Отправить</button>
+
         <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
             <i class="icon-remove icon-large"></i>Отмена
         </button>
+</form>
 </div><br>
 {% endblock content %}

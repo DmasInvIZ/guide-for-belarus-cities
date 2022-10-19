@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block title %}
-   <title> Города области </title>   <!-- почему-то не могу вывести название области-->
+   <title> Города в этой области </title>   <!-- почему-то не могу вывести название области-->
 {% endblock title %}
 
 {% block nav1 %}
@@ -14,11 +14,11 @@
 {% block content %}
 
 <section>
-    <div class="container-sm">
+    <div class="container-sm" style="max-width: 60rem;">
         <a class="link" href="/districts"><-- К областям</a>
         {% if towns %}
             {% for town in towns %}
-            <div class="card mb-2" style="max-width: 60rem;">
+            <div class="card mb-2">
               <img src="/{{ town.image }}" class="card-img-top" alt="Photo">
               <div class="card-body">
                 <h5 class="card-title">
@@ -29,7 +29,14 @@
             </div>
             {% endfor %}
         {% else %}
-        <center><h1>Здесь пока пусто...</h1></center>
+        <div class="card mb-2">
+              <div class="card-body">
+                <h5 class="card-title">
+                    <center>Информации нет</center>
+                </h5>
+                <p class="card-text">Здесь пусто, эту информацию добавляет Администратор</p>
+              </div>
+            </div>
         {% endif %}
     </div>
 </section>
