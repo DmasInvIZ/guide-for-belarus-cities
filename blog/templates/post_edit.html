@@ -1,12 +1,12 @@
 {% extends 'base.html' %}
 
  {% block title %}
-    <title>Редактировать пост</title>
+    <title>Редактировать отзыв</title>
 {% endblock title %}
 
 {% block content %}
 <div class="container">
-    <h1>Редактировать пост</h1>
+    <h1>Редактировать отзыв</h1>
 <form method="POST" class="post-form">{% csrf_token %}
         {{ form.text | safe }}
         {{ form.media }}

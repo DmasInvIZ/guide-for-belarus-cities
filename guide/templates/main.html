@@ -8,10 +8,9 @@
 {% block content %}
 <section>
     <div class="container" style="max-width: 60rem;">
-
         {% for i in news %}
         <div class="card mb-2">
-          <img src="{{ i.image }}" class="card-img-top" alt="Photo">
+          <img src="{{ i.image }}" class="card-img-top" alt="">
           <div class="card-body">
             <h5 class="card-title">{{ i.title }}</h5>
             <p class="card-text">{{ i.news|safe }}</p>

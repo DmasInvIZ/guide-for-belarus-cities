@@ -86,6 +86,8 @@ def publish_suggest_view(request):
     if request.method == 'POST':
         form = SuggestForm(request.POST)
         if form.is_valid():
+            form = form.save(commit=False)
+            form.author = request.user
             form.save()
             messages.success(request, 'Отлично, ваша публикация отправлена на модерацию')
             return redirect('/suggest')

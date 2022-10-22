@@ -44,16 +44,14 @@
         </li>
           {% endblock nav3 %}
           {% block nav4 %}
+          {% if user.is_authenticated %}
+          {% else %}
         <li class="nav-item">
           <a class="nav-link" href="/register">Регистрация</a>
         </li>
+          {% endif %}
           {% endblock nav4 %}
           {% block nav5 %}
-        <li class="nav-item">
-          <a class="nav-link" href="/admin">Вход для администрации</a>
-        </li>
-          {% endblock nav5 %}
-          {% block nav6 %}
         <li class="nav-item">
           {% if user.is_authenticated %}
             <li class="nav-item">
@@ -66,6 +64,17 @@
             	<a class="nav-item nav-link" href="/login/">Вход</a>
           	{% endif %}
         </li>
+          {% endblock nav5 %}
+          {% block nav6 %}
+          {% if user.is_superuser %}
+          <li class="nav-item">
+          <a class="nav-link" href="/admin">Админ-панель</a>
+        </li>
+          {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/admin">Вход для администрации</a>
+        </li>
+          {% endif %}
           {% endblock nav6 %}
       </ul>
 
@@ -92,7 +101,7 @@
                       <center>
                           <td style="height:200px; vertical-align:top;">Информация:</td><br>
                           <a href="/about/">О проекте</a><br>
-                          <a href="/blog/">Блог проекта</a>
+                          <a href="/blog/">Отзывы о путешествиях</a>
                       </center>
                         {% endblock info %}
                     </div>

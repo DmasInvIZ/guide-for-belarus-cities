@@ -5,7 +5,7 @@ from django.urls import reverse
 
 
 class News(models.Model):
-    author = models.CharField('Автор', max_length=20, default='Admin', null=True, blank=True)
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default='admin', verbose_name='Автор новости')
     date = models.DateTimeField(auto_now=True)  # дата публикации, обновляется при редактировании
     title = models.CharField('Заголовок новости', max_length=500)  # заголовок новости
     news = RichTextField('Текст новости', max_length=2000)  # новость
@@ -55,14 +55,14 @@ class Towns(models.Model):
 
 # предложения по публикациям от пользователей
 class UserTowns(models.Model):
-    author = models.CharField('Автор', max_length=20, default='', null=True, blank=True)
-    town = models.ForeignKey(Towns, on_delete=models.CASCADE, default='')
+    author = models.ForeignKey(User, on_delete=models.CASCADE, default='', verbose_name='Автор публикации')
+    town = models.ForeignKey(Towns, on_delete=models.CASCADE, default='', verbose_name='Город')
     is_published = models.BooleanField('В публикации', default='False')
     watch = RichTextField('Описание достопримечательностей', max_length=5000, default='', null=True, blank=True) \
         # Что посмотреть
     eat = RichTextField('Описание мест общепита, где можно перекусить', default='', null=True, blank=True) \
         # где поесть
-    sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='', null=True,
+    sleep = RichTextField('Список и описание мест для отдыха - гостиниц, кемпингов, хостелов', default='', null=True,
                           blank=True) \
         # где поспать
 

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-<title> Пост </title>
+<title> Отзыв </title>
 {% endblock title %}
 
 {% block content %}
@@ -9,7 +9,7 @@
 <div class="container-sm">
 <div class="container">
   <div class="nav-right">
-      <a href="{% url 'new_post' %}">Добавить новый пост</a>
+      <a href="{% url 'new_post' %}">Добавить новый отзыв</a>
 {% if messages %}
         	{% for message in messages %}
           	<div class="alert alert-{{ message.tags }}">
@@ -27,14 +27,13 @@
       </div>
    </div>
 
-<!--{% if user.is_authenticated %}-->
     {% if request.user == post.author %}
     -- Управление постом --<br>
-      <a href='{% url "post_edit" post.pk %}'>Редактировать пост</a> <br>
-      <a href="{% url 'post_delete' post.pk %}">Удалить пост</a> <br>
+      <a href='{% url "post_edit" post.pk %}'>Редактировать отзыв</a> <br>
+      <a href="{% url 'post_delete' post.pk %}">Удалить отзыв</a> <br>
     ----------------------------<br>
     {% endif %}
-<!--{% endif %}-->
+
   <a href='{% url "blog_home" %}'>Смотреть все посты</a>
 </div>
 </div>

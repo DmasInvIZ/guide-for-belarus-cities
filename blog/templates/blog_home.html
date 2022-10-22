@@ -1,12 +1,12 @@
 {% extends "base.html" %}
 
 {% block title %}
-<title> Пост </title>
+<title> Отзывы </title>
 {% endblock title %}
 {% block content %}
 {% if posts %}
     <div class="container">
-    <a href="{% url 'new_post' %}">Добавить новый пост</a>
+    <a href="{% url 'new_post' %}">Добавить новый отзыв</a>
 
         {% if messages %}
         	{% for message in messages %}
@@ -30,7 +30,7 @@
 {% endfor %}
 {% else %}
 <center>
-    <h1>Постов пока нет, будьте первым! <a href="/blog/new_post/">Начать!</a></h1>
+    <h1>Отзывов пока нет, будьте первым! <a href="/blog/new_post/">Начать!</a></h1>
 </center>
 {% endif %}
 {% endblock content %}
