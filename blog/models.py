@@ -6,8 +6,8 @@ from django.urls import reverse
 
 class Post(models.Model):
     title = models.CharField('Заголовок', max_length=200)
-    author = models.CharField('Автор', max_length=200, default='')
-    # author = models.ForeignKey(User, on_delete=models.PROTECT)
+    # author = models.CharField('Автор', max_length=200, default='')
+    author = models.ForeignKey(User, on_delete=models.PROTECT)
     body = RichTextField('Пост', blank=True, null=True)  # вставка для красивого оформления поста
     date = models.DateTimeField(auto_now=True)
 
