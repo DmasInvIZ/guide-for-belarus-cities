@@ -9,7 +9,12 @@
     <h1>Удаление поста</h1>
     <form action="" method="post">{% csrf_token %}
       <p>Вы уверены, что хотите удалить пост "{{ post.title }}"?</p>
-      <input type="submit" value="Удалить" />
+        <button type="submit" class="save btn btn-default">Удалить запись</button>
+
+                <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
+            <i class="icon-remove icon-large"></i>Отмена
+        </button>
+
     </form>
 </div>
 {% endblock content %}
