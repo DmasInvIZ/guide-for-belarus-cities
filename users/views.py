@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import UserRegisterForm
 
 
+# регистрация
 def register(request):
     if request.method == 'POST':
         form = UserRegisterForm(request.POST)
@@ -18,7 +19,7 @@ def register(request):
     return render(request, 'register.html', {'form': form})
 
 
+# страница профиля
 @login_required
 def profile(request):
-    current_user = request.user
-    return render(request, 'profile.html', {'current_user': current_user})
+    return render(request, 'profile.html')

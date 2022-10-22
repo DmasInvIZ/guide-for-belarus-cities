@@ -2,14 +2,14 @@
 {% load crispy_forms_tags %}
 
 {% block title %}
-<title> Профиль пользователя </title>
+<title> Профиль пользователя {{user.username}} </title>
 {% endblock title %}
 
 {% block nav5 %}
         <li class="nav-item">
           {% if user.is_authenticated %}
             <li class="nav-item">
-                    <a class="nav-link disabled" href="/profile">{{ user.username }}</a>
+                    <a class="nav-link disabled" href="/profile">Вы вошли как [{{ user.username }}]</a>
                 </li>
             <li class="nav-item">
                 <a class="nav-item nav-link" href="/logout/">Выход</a>
@@ -27,7 +27,14 @@
         <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
-          <p class="text-secondary">{{ user.email }}</p><br>
+          <p class="text-secondary">{{ user.email }}</p>
+<!--            Можно заполнить через админ-панель-->
+            {% if user.first_name and user.last_name %}
+                Ваше имя - {{user.first_name}}<br>
+                Ваша фамилия - {{user.last_name}}<br>
+            {% else %}
+            {% endif %}
+            <br>
             <a href="/suggest">Предложить публикацию</a>
         </div>
       </div>

@@ -23,7 +23,7 @@ class AboutAdmin(admin.ModelAdmin):
 
 
 class UserTownsAdmin(admin.ModelAdmin):
-    list_display = ('town', 'is_published')  ## дописать автора
+    list_display = ('town', 'is_published')
     search_fields = ('town', 'watch', 'eat', 'sleep')
     list_editable = ('is_published',)
     list_filter = ('is_published',)

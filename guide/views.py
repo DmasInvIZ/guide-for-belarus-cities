@@ -43,8 +43,7 @@ def district_view(request, pk):
 @login_required
 def town_watch_view(request, pk):
     town = Towns.objects.get(id=pk)
-    pub_town_watch = UserTowns.objects.filter(town_id=pk).filter(
-        is_published=True)  # ищет запись в таблице предложений от юзеров (что посмотреть)
+    pub_town_watch = UserTowns.objects.filter(town_id=pk, is_published=True)  # ищет запись в таблице предложений от юзеров (что посмотреть)
     context = {
         'town_watch': town,
         'pub_town_watch': pub_town_watch,
@@ -56,8 +55,7 @@ def town_watch_view(request, pk):
 @login_required
 def town_eat_view(request, pk):
     town = Towns.objects.get(id=pk)
-    pub_town_eat = UserTowns.objects.filter(town_id=pk).filter(
-        is_published=True)  # ищет запись в таблице предложений от юзеров (где поесть)
+    pub_town_eat = UserTowns.objects.filter(town_id=pk, is_published=True)  # ищет запись в таблице предложений от юзеров (где поесть)
     context = {
         'town_eat': town,
         'pub_town_eat': pub_town_eat,
@@ -71,8 +69,7 @@ def town_eat_view(request, pk):
 @login_required
 def town_sleep_view(request, pk):
     town = Towns.objects.get(id=pk)
-    pub_town_sleep = UserTowns.objects.filter(town_id=pk).filter(
-        is_published=True)  # ищет запись в таблице предложений от юзеров (где поспать)
+    pub_town_sleep = UserTowns.objects.filter(town_id=pk, is_published=True)  # ищет запись в таблице предложений от юзеров (где поспать)
     context = {
         'town_sleep': town,
         'pub_town_sleep': pub_town_sleep,

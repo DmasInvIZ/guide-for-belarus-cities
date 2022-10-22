@@ -55,7 +55,7 @@
         <li class="nav-item">
           {% if user.is_authenticated %}
             <li class="nav-item">
-                    <a class="nav-link" href="/profile">{{ user.username }}</a>
+                    <a class="nav-link" href="/profile">Вы вошли как [{{ user.username }}]</a>
                 </li>
             <li class="nav-item">
                 <a class="nav-item nav-link" href="/logout/">Выход</a>
