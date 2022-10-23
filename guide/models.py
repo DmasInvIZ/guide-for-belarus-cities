@@ -38,11 +38,11 @@ class Towns(models.Model):
     image = models.ImageField('Фотография для превью', upload_to='static/cities', null=True, blank=True)
     short_info = models.TextField('Короткое описание, для превью', max_length=2000, default='',) \
         # короткое описание города, для страницы с общим списком городов
-    watch = RichTextField('Описание достопримечательностей', max_length=5000, default='', null=True, blank=True) \
+    watch = RichTextField('Описание достопримечательностей', max_length=5000, default='') \
         # Что посмотреть
-    eat = RichTextField('Описание мест общепита, где можно перекусить', default='', null=True, blank=True) \
+    eat = RichTextField('Описание мест общепита, где можно перекусить', default='') \
         # где поесть
-    sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='', null=True, blank=True) \
+    sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='') \
         # где поспать
 
     def __str__(self):
@@ -58,12 +58,11 @@ class UserTowns(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='', verbose_name='Автор публикации')
     town = models.ForeignKey(Towns, on_delete=models.CASCADE, default='', verbose_name='Город')
     is_published = models.BooleanField('В публикации', default='False')
-    watch = RichTextField('Описание достопримечательностей', max_length=5000, default='', null=True, blank=True) \
+    watch = RichTextField('Описание достопримечательностей', max_length=5000, default='') \
         # Что посмотреть
-    eat = RichTextField('Описание мест общепита, где можно перекусить', default='', null=True, blank=True) \
+    eat = RichTextField('Описание мест общепита, где можно перекусить', default='') \
         # где поесть
-    sleep = RichTextField('Список и описание мест для отдыха - гостиниц, кемпингов, хостелов', default='', null=True,
-                          blank=True) \
+    sleep = RichTextField('Список и описание мест для отдыха - гостиниц, кемпингов, хостелов', default='') \
         # где поспать
 
     def __str__(self):

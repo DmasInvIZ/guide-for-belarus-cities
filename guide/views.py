@@ -88,6 +88,8 @@ def publish_suggest_view(request):
             form.save()
             messages.success(request, 'Отлично, ваша публикация отправлена на модерацию')
             return redirect('/suggest')
+        else:
+            messages.warning(request, 'Что-то не так, проверьте, все ли поля заполнены?')
     else:
         form = SuggestForm()
     return render(request, 'suggest.html', {'form': form})
