@@ -1,8 +1,6 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import PermissionRequiredMixin, LoginRequiredMixin
-from django.contrib.auth.models import User
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, HttpResponse
-from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, UpdateView
 from django.views.generic.edit import CreateView, DeleteView
@@ -32,7 +30,6 @@ class BlogCreateView(CreateView):
     model = Post
     template_name = 'new_post.html'
     fields = ['title', 'body']  # поля формы
-    # success_message = 'Запись создана'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -54,13 +51,6 @@ class BlogUpdateView(LoginRequiredMixin, UpdateView):
         messages.success(self.request, f'Запись изменена')
         return super().form_valid(form)
 
-    # def get_context_data(self, **kwargs):
-    #     kwargs['update'] = True
-    #     return super().get_context_data(**kwargs)
-
-    # def handle_no_permission(self):
-    #     self.request
-
     def get_form_kwargs(self):
         kwargs = super().get_form_kwargs()
         if self.request.user != kwargs['instance'].author:
@@ -75,10 +65,6 @@ class BlogDeleteView(LoginRequiredMixin, DeleteView):
     model = Post
     template_name = 'post_delete.html'
     success_url = reverse_lazy('blog_home')
-
-    # def form_valid(self, form):
-    #     messages.success(self.request, f'Запись удалена')
-    #     return super().form_valid(form)
 
     def post(self, request, *args, **kwargs):
         return super().post(request)

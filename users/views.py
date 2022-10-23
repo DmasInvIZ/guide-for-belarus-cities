@@ -14,6 +14,8 @@ def register(request):
             username = form.cleaned_data.get('username')
             messages.success(request, f'{username}, Ваш аккаунт создан, можно войти на сайт.')
             return redirect('/register')
+        else:
+            messages.warning(request, 'Что-то не так, проверьте, все ли поля заполнены правильно?')
     else:
         form = UserRegisterForm()
     return render(request, 'register.html', {'form': form})
