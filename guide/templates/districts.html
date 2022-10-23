@@ -18,7 +18,7 @@
         {% if districts %}
             {% for distr in districts %}
             <div class="card mb-2">
-              <img src="/{{ distr.image }}" class="card-img-top" alt="Photo">
+              <img src="/{{ distr.image }}" class="card-img-top" alt="">
               <div class="card-body">
                 <h5 class="card-title">
                     <a href="/district/{{ distr.id }}">{{ distr.name }}</a>
@@ -29,13 +29,12 @@
             {% endfor %}
         {% else %}
         <div class="card mb-2">
-              <div class="card-body">
-                <h5 class="card-title">
-                    <center>Информации нет</center>
-                </h5>
-                <p class="card-text">Здесь пусто, информацию по областям добавляет Администратор</p>
-              </div>
-            </div>
+          <div class="card-body">
+            <h5 class="card-title">Страница со списком областей Беларуси</h5>
+            <p class="card-text">Информация добавляется администратором сайта. Чтобы добавлять посты в этот раздел, <a href="/admin">авторизуйтесь</a> как администратор</p>
+            <p class="card-text" style="text-align: right"><small class="text-muted">Администрация</small></p>
+          </div>
+        </div>
         {% endif %}
     </div>
 </section>

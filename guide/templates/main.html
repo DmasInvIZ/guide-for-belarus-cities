@@ -8,6 +8,7 @@
 {% block content %}
 <section>
     <div class="container" style="max-width: 60rem;">
+        {% if news %}
         {% for i in news %}
         <div class="card mb-2">
           <img src="{{ i.image }}" class="card-img-top" alt="">
@@ -18,6 +19,16 @@
           </div>
         </div>
         {% endfor %}
+        {% else %}
+        <div class="card mb-2">
+          <div class="card-body">
+            <h5 class="card-title">Страница с новостями сферы туризма Беларуси</h5>
+            <p class="card-text">На главную страницу новости добавляются администратором сайта.
+            Чтобы добавлять новости, <a href="/admin">авторизуйтесь</a> как администратор</p>
+            <p class="card-text" style="text-align: right"><small class="text-muted">Администрация</small></p>
+          </div>
+        </div>
+        {% endif %}
     </div>
 </section>
 {% endblock content %}

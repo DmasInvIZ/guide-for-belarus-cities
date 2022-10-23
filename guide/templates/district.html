@@ -19,7 +19,7 @@
         {% if towns %}
             {% for town in towns %}
             <div class="card mb-2">
-              <img src="/{{ town.image }}" class="card-img-top" alt="Photo">
+              <img src="/{{ town.image }}" class="card-img-top" alt="">
               <div class="card-body">
                 <h5 class="card-title">
                     <a href="/town_watch/{{ town.id }}">{{ town.name }}</a>
@@ -30,13 +30,14 @@
             {% endfor %}
         {% else %}
         <div class="card mb-2">
-              <div class="card-body">
-                <h5 class="card-title">
-                    <center>Информации нет</center>
-                </h5>
-                <p class="card-text">Здесь пусто, эту информацию добавляет Администратор</p>
-              </div>
-            </div>
+          <div class="card-body">
+            <h5 class="card-title">Страница со списком городов в области</h5>
+            <p class="card-text">Информация добавляется администратором сайта и дополняется пользователями через личный
+                кабинет через премодерацию. Чтобы добавлять посты в этот раздел, <a href="/admin">авторизуйтесь</a>
+                как администратор</p>
+            <p class="card-text" style="text-align: right"><small class="text-muted">Администрация</small></p>
+          </div>
+        </div>
         {% endif %}
     </div>
 </section>
