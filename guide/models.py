@@ -34,9 +34,9 @@ class Districts(models.Model):
 
 class Towns(models.Model):
     name = models.CharField('Город', max_length=50)  # название города
-    district = models.ForeignKey(Districts, on_delete=models.CASCADE, default=1)  # название области
+    district = models.ForeignKey(Districts, on_delete=models.CASCADE, default='', verbose_name='Область страны')  # название области
     image = models.ImageField('Фотография для превью', upload_to='static/cities', null=True, blank=True)
-    short_info = models.TextField('Короткое описание, для превью', max_length=2000, default='', null=True, blank=True) \
+    short_info = models.TextField('Короткое описание, для превью', max_length=2000, default='',) \
         # короткое описание города, для страницы с общим списком городов
     watch = RichTextField('Описание достопримечательностей', max_length=5000, default='', null=True, blank=True) \
         # Что посмотреть
