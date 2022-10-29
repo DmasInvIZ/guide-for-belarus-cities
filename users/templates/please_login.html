@@ -20,17 +20,28 @@
 {% endblock nav5 %}
 
 {% block content %}
-    <center>
+<div class="container">
         <legend class="border-bottom mb-3">Чтобы сюда попасть, нужно авторизоваться</legend>
             <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Войти</button>
+                <div class="col-3">
+                    {% csrf_token %}
+<!--                    {{form.username}}-->
+<!--                    {{form.password}}-->
+                    <input class="form-control" type="text" placeholder="Введите логин" label={{form.username}}
+                    <input class="form-control mt-3" type="password" placeholder="Введите пароль" aria-label={{form.password}}
+                </div>
+                <button type="submit" class="save btn btn-default mt-2">Войти</button>
             </form>
+<!--                    <br>-->
+<!--            <form method="POST">-->
+<!--                {% csrf_token %}-->
+<!--                {{ form.as_p }}-->
+<!--            <button type="submit" class="save btn btn-default">Войти</button>-->
+<!--            </form>-->
         <div class="border-top pt-3">
             <small class="text-muted">
                 Нужен аккаунт? <a class="ml-2" href="/users/register">Регистрация</a>
             </small>
         </div>
-    </center>
+</div>
 {% endblock content %}

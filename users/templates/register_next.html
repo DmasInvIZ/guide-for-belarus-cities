@@ -12,18 +12,18 @@
 
 {% block content %}
 
-<!--<div class="container">-->
-<!--{% if messages %}-->
-<!--        	{% for message in messages %}-->
-<!--          	<div class="alert alert-{{ message.tags }}">-->
-<!--            	{{ message }}-->
-<!--          	</div>-->
-<!--        	{% endfor %}-->
-<!--{% endif %}-->
-<!--</div>-->
+<div class="container">
+{% if messages %}
+        	{% for message in messages %}
+          	<div class="alert alert-{{ message.tags }}">
+            	{{ message }}
+          	</div>
+        	{% endfor %}
+{% endif %}
+</div>
 
  <div class="container">
-        <legend class="border-bottom mb-3">Регистрация пользователя</legend>
+        <legend class="border-bottom mb-3">Дополните информацию о себе</legend>
             <form method="POST">
                 <div class="col-3">
                     {% csrf_token %}
@@ -34,11 +34,11 @@
                 </div>
                 <button type="submit" class="save btn btn-default mt-2">Зарегистрироваться</button>
             </form>
-           <div class="border-top pt-3">
-               <small class="text-muted">
-                    Уже есть аккаунт? <a class="ml-2" href="/users/login/">Вход</a>
-            </small>
-           </div>
+<!--           <div class="border-top pt-3">-->
+<!--               <small class="text-muted">-->
+<!--                    Уже есть аккаунт? <a class="ml-2" href="/users/login/">Вход</a>-->
+<!--            </small>-->
+<!--           </div>-->
 
 </div>
 
