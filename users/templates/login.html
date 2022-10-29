@@ -4,20 +4,20 @@
     <title>Авторизация</title>
 {% endblock title %}
 
-          {% block nav5 %}
-        <li class="nav-item">
+{% block nav5 %}
           {% if user.is_authenticated %}
             <li class="nav-item">
                     <a class="nav-link" href="/users/profile">Вы вошли как [{{ user.username }}]</a>
-                </li>
+            </li>
             <li class="nav-item">
                 <a class="nav-item nav-link" href="/users/logout/">Выход</a>
             </li>
           	{% else %}
+            <li class="nav-item">
             	<a class="nav-item nav-link disabled" href="/users/login/">Вход</a>
+            </li>
           	{% endif %}
-        </li>
-          {% endblock nav5 %}
+{% endblock nav5 %}
 
 {% block content %}
     <center>
