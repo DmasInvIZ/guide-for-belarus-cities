@@ -47,7 +47,7 @@
           {% if user.is_authenticated %}
           {% else %}
         <li class="nav-item">
-          <a class="nav-link" href="/register">Регистрация</a>
+          <a class="nav-link" href="/users/register">Регистрация</a>
         </li>
           {% endif %}
           {% endblock nav4 %}
@@ -61,7 +61,7 @@
                 <a class="nav-item nav-link" href="/logout/">Выход</a>
             </li>
           	{% else %}
-            	<a class="nav-item nav-link" href="/login/">Вход</a>
+            	<a class="nav-item nav-link" href="/users/login/">Вход</a>
           	{% endif %}
         </li>
           {% endblock nav5 %}

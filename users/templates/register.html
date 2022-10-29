@@ -24,23 +24,18 @@
 </div>
 
  <div class="container">
-       <div class="content-section">
+        <legend class="border-bottom mb-3">Регистрация пользователя</legend>
             <form method="POST">
                 {% csrf_token %}
-                <fieldset class="form-group">
-                    <legend class="border-bottom mb-4">Добро пожаловать на сайт</legend>
-                    {{ form|crispy }}
-                </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Регистрация</button>
-            </div>
+                {{form.as_p}}
+                <button type="submit" class="save btn btn-default">Зарегистрироваться</button>
             </form>
            <div class="border-top pt-3">
                <small class="text-muted">
-                    Уже есть аккаунт? <a class="ml-2" href="/login/">Вход</a>
+                    Уже есть аккаунт? <a class="ml-2" href="/users/login/">Вход</a>
             </small>
            </div>
-    </div>
+
 </div>
 
 {% endblock content %}
