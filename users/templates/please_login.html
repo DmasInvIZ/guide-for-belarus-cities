@@ -1,23 +1,37 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
-{% block content %}
 
+{% block title %}
+    <title>Нужно авторизоваться</title>
+{% endblock title %}
+
+          {% block nav5 %}
+<!--        <li class="nav-item">-->
+          {% if user.is_authenticated %}
+            <li class="nav-item">
+                    <a class="nav-link" href="/users/profile">Вы вошли как [{{ user.username }}]</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-item nav-link" href="/users/logout/">Выход</a>
+            </li>
+          	{% else %}
+            <li class="nav-item">
+            	<a class="nav-item nav-link disabled" href="/users/login/">Вход</a>
+            </li>
+          	{% endif %}
+          {% endblock nav5 %}
+
+{% block content %}
     <center>
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Чтобы просматривать этот контент, войдите в аккаунт</legend>
-                {{ form|crispy }}
-            </fieldset>
-            <div class="form-group">
-                <button class="btn btn-outline-info" type="submit">Войти</button>
-            </div>
-        </form>
+        <legend class="border-bottom mb-3">Чтобы сюда попасть, нужно авторизоваться</legend>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+            <button type="submit" class="save btn btn-default">Войти</button>
+            </form>
         <div class="border-top pt-3">
             <small class="text-muted">
-                Нужен аккаунт? <a class="ml-2" href="{% url 'register' %}">Регистрация</a>
+                Нужен аккаунт? <a class="ml-2" href="/users/register">Регистрация</a>
             </small>
         </div>
     </center>
-
 {% endblock content %}
