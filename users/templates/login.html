@@ -20,17 +20,21 @@
 {% endblock nav5 %}
 
 {% block content %}
-    <center>
+<div class="container">
         <legend class="border-bottom mb-3">Авторизация</legend>
-            <form method="POST">
-                {% csrf_token %}
-                {{ form.as_p }}
-            <button type="submit" class="save btn btn-default">Войти</button>
+    <div class="col-3">
+        <div class="form-control mb-3">
+            <form id="add_form" method="POST">
+                    {% csrf_token %}
+                    {{form.as_p}}
+                <button type="submit" class="save btn btn-default mt-2">Войти</button>
             </form>
+        </div>
+    </div>
         <div class="border-top pt-3">
             <small class="text-muted">
                 Нужен аккаунт? <a class="ml-2" href="/users/register">Регистрация</a>
             </small>
         </div>
-    </center>
+</div>
 {% endblock content %}
