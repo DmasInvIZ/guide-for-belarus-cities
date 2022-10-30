@@ -13,18 +13,18 @@
 {% block content %}
 
 <div class="container">
-{% if messages %}
+    {% if messages %}
         	{% for message in messages %}
           	<div class="alert alert-{{ message.tags }}">
             	{{ message }}
           	</div>
         	{% endfor %}
-{% endif %}
+    {% endif %}
 </div>
 
  <div class="container">
         <legend class="border-bottom mb-3">Регистрация пользователя</legend>
-     <div class="col-3">
+     <div class="col-4">
          <div class="form-control mb-3">
              <form method="POST">
                  {% csrf_token %}

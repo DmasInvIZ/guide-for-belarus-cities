@@ -13,33 +13,26 @@
 {% block content %}
 
 <div class="container">
-{% if messages %}
+    {% if messages %}
         	{% for message in messages %}
           	<div class="alert alert-{{ message.tags }}">
             	{{ message }}
           	</div>
         	{% endfor %}
-{% endif %}
+    {% endif %}
 </div>
 
  <div class="container">
         <legend class="border-bottom mb-3">Дополните информацию о себе</legend>
+     <div class="col-4">
+         <div class="form-control mb-3">
             <form method="POST">
-                <div class="col-3">
-                    {% csrf_token %}
-                    <input class="form-control" type="text" placeholder="Введите логин" label={{form.username}}
-                    <input class="form-control mt-3" type="email" placeholder="Введите Email" aria-label={{form.email}}
-                    <input class="form-control mt-3" type="password" placeholder="Введите пароль" aria-label={{form.password1}}
-                    <input class="form-control mt-3" type="password" placeholder="Повторите пароль" aria-label={{form.password2}}
-                </div>
-                <button type="submit" class="save btn btn-default mt-2">Зарегистрироваться</button>
+                    {{form.as_p}}
+                <button type="submit" class="save btn btn-default mt-2">Сохранить</button>
+                <button type="reset" class="save btn btn-default mt-2">Очистить форму</button>
             </form>
-<!--           <div class="border-top pt-3">-->
-<!--               <small class="text-muted">-->
-<!--                    Уже есть аккаунт? <a class="ml-2" href="/users/login/">Вход</a>-->
-<!--            </small>-->
-<!--           </div>-->
-
+         </div>
+     </div>
 </div>
 
 {% endblock content %}

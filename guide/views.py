@@ -60,8 +60,6 @@ def town_eat_view(request, pk):
         'town_eat': town,
         'pub_town_eat': pub_town_eat,
     }
-    # if UserTowns.eat is None:
-    #     return render(request, 'town_eat.html', {'town_eat': town})
     return render(request, 'town_eat.html', context)
 
 
