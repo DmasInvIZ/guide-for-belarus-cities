@@ -24,8 +24,9 @@
 {% block content %}
 
 <section>
-    <div class="container-sm" style="max-width: 60rem;">
+    <div class="container-sm" style="">
         <a class="link" href="/districts"><-- К областям</a>
+<!--        <a class="link" href="/district/{{ distr.id }}"><&#45;&#45; К городам</a> -->
         <div class="card mb-2">
           <img src="/{{ town_watch.image }}" class="card-img-top" alt="">
           <div class="card-body">
@@ -35,7 +36,7 @@
         </div>
     </div>
         {% for pub in pub_town_watch %}
-        <div class="container-sm" style="max-width: 60rem;">
+        <div class="container-sm" style="">
         <div class="card mb-2">
           <div class="card-body">
             <p class="card-text">{{ pub.watch|safe }}</p>

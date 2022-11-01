@@ -24,7 +24,7 @@
 {% block content %}
 
 <section>
-    <div class="container-sm" style="max-width: 60rem;">
+    <div class="container-sm" style="">
         <a class="link" href="/districts"><-- К областям</a>
         <div class="card mb-2">
           <img src="/{{ town_eat.image }}" class="card-img-top" alt="">
@@ -35,7 +35,7 @@
         </div>
     </div>
     {% for pub in pub_town_eat %}
-        <div class="container-sm" style="max-width: 60rem;">
+        <div class="container-sm" style="">
         <div class="card mb-2">
           <div class="card-body">
             <p class="card-text">{{ pub.eat|safe }}</p>

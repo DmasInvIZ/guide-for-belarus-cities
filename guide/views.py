@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect
 from .models import About, UserTowns
 from django.utils.decorators import method_decorator
@@ -13,9 +13,22 @@ from django.contrib import messages
 
 
 # главная страница, на ней новости
-def news_view(request):
-    news = News.objects.all().order_by('-date')
-    return render(request, 'main.html', context={'news': news})
+class NewsView(ListView):
+    model = News
+    template_name = 'main.html'
+    context_object_name = 'news'
+    ordering = '-date'  # сортировка новостей по дате создания (новые сверху)
+
+
+# детали новостей
+class NewsDetailView(DetailView):
+    model = News
+    template_name = 'news_detail.html'
+
+
+# def news_view(request):
+#     news = News.objects.all().order_by('-date')
+#     return render(request, 'main.html', context={'news': news})
 
 
 # страница "О проекте"

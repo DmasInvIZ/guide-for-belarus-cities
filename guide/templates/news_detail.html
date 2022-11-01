@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+    <title>{{ title }}</title>
+{% endblock title %}
+
+{% block content %}
+<section>
+<div class="container-xxl">
+      <div class="row">
+          <div class="col-sm-3">
+              <p>Здесь будет меню с выбором областей и городов,</p>
+              <p>Или другое меню я еще не определился</p>
+          </div>
+          <div class="col-sm-9">
+                <div class="card mb-2">
+                  <img src="/{{ news.image }}" class="card-img-top" alt="">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ news.title }}</h5>
+                    <p class="card-text">{{ news.news|safe }}</p>
+                    <p class="card-text"><small class="text-muted">{{ news.author }} | {{ news.date }}</small></p>
+                  </div>
+                </div>
+
+<!--                <div class="card mb-2">-->
+<!--                  <div class="card-body">-->
+<!--                    <h5 class="card-title">Страница с новостями сферы туризма Беларуси</h5>-->
+<!--                    <p class="card-text">На главную страницу новости добавляются администратором сайта.-->
+<!--                    Чтобы добавлять новости, <a href="/admin">авторизуйтесь</a> как администратор</p>-->
+<!--                    <p class="card-text" style="text-align: right"><small class="text-muted">Администрация</small></p>-->
+<!--                  </div>-->
+<!--                </div>-->
+
+          </div>
+      </div>
+</div>
+</section>
+{% endblock content %}
