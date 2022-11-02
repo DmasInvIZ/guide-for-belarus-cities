@@ -6,7 +6,6 @@
 
 {% block content %}
 <div class="container" style="max-width: 60rem;">
-    <h1>Предложить публикацию</h1>
 {% if messages %}
     {% for message in messages %}
     <div class="alert alert-{{ message.tags }}">
@@ -14,15 +13,21 @@
     </div>
     {% endfor %}
 {% endif %}
-<form method="POST" class="post-form">
-    {% csrf_token %}
-        {{ form.text | safe }}
-        {{ form.media }}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Отправить</button>
-        <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
-            <i class="icon-remove icon-large"></i>Отмена
-        </button>
-</form>
+    <div class="col-11">
+        <legend class="border-bottom mb-3">Предложить публикацию</legend>
+        <div class="form-control mb-3">
+            <h4>Все поля обязательны для заполнения</h4>
+                <form method="POST" class="post-form">
+                    {% csrf_token %}
+                        {{ form.text | safe }}
+                        {{ form.media }}
+                        {{ form.as_p }}
+                        <button type="submit" class="save btn btn-default">Отправить</button>
+                        <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
+                            <i class="icon-remove icon-large"></i>Отмена
+                        </button>
+                </form>
+            </div>
+        </div>
 </div><br>
 {% endblock content %}
