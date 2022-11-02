@@ -22,7 +22,8 @@
     {% endif %}
 </div>
 
- <div class="container">
+<div class="container-xxl">
+    <div class="row">
         <legend class="border-bottom mb-3">Регистрация пользователя</legend>
      <div class="col-4">
          <div class="form-control mb-3">
@@ -33,12 +34,21 @@
              </form>
          </div>
      </div>
+     <div class="col-sm-8">
+         <div class="container text-center">
+             <h1>Преимущества регистрации</h1>
+             <p>У зарегистрированных пользователей будет возможность:</p>
+             <li>Просматривать и дополнять информацию о городах</li>
+             <li>Добавлять записи в "отзывы о путешествиях"</li>
+         </div>
+     </div>
            <div class="border-top pt-3">
                <small class="text-muted">
                     Уже есть аккаунт? <a class="ml-2" href="/users/login/">Вход</a>
             </small>
            </div>
 
+    </div>
 </div>
 
 {% endblock content %}
