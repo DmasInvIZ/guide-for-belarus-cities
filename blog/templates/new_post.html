@@ -6,17 +6,22 @@
 
 {% block content %}
 <div class="container">
-    <h1>Новый отзыв</h1>
-<form method="POST" class="post-form">
-    {% csrf_token %}
-        {{ form.text | safe }}
-        {{ form.media }}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Отправить</button>
-
-        <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
-            <i class="icon-remove icon-large"></i>Отмена
-        </button>
-</form>
-</div><br>
+    <div class="row">
+        <legend class="border-bottom mb-3">Публикация отзыва</legend>
+            <div class="col-10">
+                <div class="form-control mb-3">
+                    <form method="POST" class="post-form">
+                        {% csrf_token %}
+                            {{ form.text | safe }}
+                            {{ form.media }}
+                            {{ form.as_p }}
+                            <button type="submit" class="save btn btn-default">Отправить</button>
+                            <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
+                                <i class="icon-remove icon-large"></i>Отмена
+                            </button>
+                    </form>
+                </div>
+            </div>
+    </div>
+</div>
 {% endblock content %}
