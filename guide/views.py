@@ -26,11 +26,6 @@ class NewsDetailView(DetailView):
     template_name = 'news_detail.html'
 
 
-# def news_view(request):
-#     news = News.objects.all().order_by('-date')
-#     return render(request, 'main.html', context={'news': news})
-
-
 # страница "О проекте"
 @method_decorator(login_required, name='dispatch')
 class AboutView(ListView):
@@ -43,13 +38,17 @@ class AboutView(ListView):
 # страница со списком всех внесенных областей страны
 def what_to_watch_view(request):
     districts = Districts.objects.all().order_by('name')
-    return render(request, 'districts.html', context={'districts': districts})
+    return render(
+        request,
+        ['districts.html', 'main.html'],
+        context={'districts': districts}
+    )
 
 
 # выводим список всех внесенных городов в запрошенной области
-def district_view(request, pk):
+def towns_view(request, pk):
     towns = Towns.objects.filter(district_id=pk).order_by('name')
-    return render(request, 'district.html', context={'towns': towns})
+    return render(request, 'towns.html', context={'towns': towns})
 
 
 # выводим город по запросу (что посмотреть)
