@@ -7,17 +7,17 @@
 
           {% block nav1 %}
         <li class="nav-item">
-          <a class="nav-link" href="/town_watch/{{town_eat.id}}">Что посмотреть</a>
+          <a class="nav-link" href="/towns/town_watch/{{town_eat.id}}">Что посмотреть</a>
         </li>
           {% endblock nav1 %}
           {% block nav2 %}
         <li class="nav-item">
-          <a class="nav-link disabled" href="">Где поесть</a>
+          <a class="nav-link disabled" href="/towns/town_eat/{{town_eat.id}}">Где поесть</a>
         </li>
           {% endblock nav2 %}
           {% block nav3 %}
         <li class="nav-item">
-          <a class="nav-link" href="/town_sleep/{{town_eat.id}}">Где переночевать</a>
+          <a class="nav-link" href="/towns/town_sleep/{{town_eat.id}}">Где переночевать</a>
         </li>
           {% endblock nav3 %}
 
