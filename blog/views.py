@@ -30,6 +30,7 @@ class BlogCreateView(CreateView):
     model = Post
     template_name = 'new_post.html'
     fields = ['title', 'body']  # поля формы
+    success_url = '/blog'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
