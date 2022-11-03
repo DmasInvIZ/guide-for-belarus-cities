@@ -5,12 +5,12 @@
 {% endblock title %}
 
 {% block content %}
-<div class="container">
+<div class="container-xxl">
     <div class="row">
         <legend class="border-bottom mb-3">Публикация отзыва</legend>
-            <div class="col-10">
+            <div class="col-8">
                 <div class="form-control mb-3">
-                    <form method="POST" class="post-form">
+                    <form id="add_form" method="POST">
                         {% csrf_token %}
                             {{ form.text | safe }}
                             {{ form.media }}
@@ -21,6 +21,13 @@
                             </button>
                     </form>
                 </div>
+            </div>
+        <div class="col-4">
+            <h4>Правила публикации поста:</h4>
+            <li>Описывать события честно</li>
+            <li>Воздержаться от использовани ненормативной лексики</li>
+            <li>И чтото еще...</li>
+
             </div>
     </div>
 </div>

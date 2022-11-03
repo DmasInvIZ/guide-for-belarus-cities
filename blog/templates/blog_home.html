@@ -5,9 +5,8 @@
 {% endblock title %}
 {% block content %}
 {% if posts %}
-    <div class="container">
+    <div class="container-xxl">
     <a href="{% url 'new_post' %}">Добавить новый отзыв</a>
-
         {% if messages %}
         	{% for message in messages %}
           	<div class="alert alert-{{ message.tags }}">
@@ -17,13 +16,19 @@
         {% endif %}
 </div>
 {% for post in posts %}
-<div class="container">
+<div class="container-xxl">
     <div class="card mb-2">
         <div class="card-body">
             <h5 class="card-title">{{ post.title }}</h5>
             <p class="card-text">{{ post.body|safe }}</p>
             <p class="card-text"><small class="text-muted">{{ post.author }} | {{ post.date }}</a></small></p>
             <p class="card-text"><small class="text-muted"><a href='{% url "post_detail" post.pk %}'>Читать полностью</a> <br></small></p>
+                {% if request.user == post.author %}
+    -- Управление постом --<br>
+      <a href='{% url "post_edit" post.pk %}'>Редактировать отзыв</a> <br>
+      <a href="{% url 'post_delete' post.pk %}">Удалить отзыв</a> <br>
+    ----------------------------<br>
+    {% endif %}
         </div>
     </div>
 </div>
