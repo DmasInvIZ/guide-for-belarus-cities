@@ -5,16 +5,21 @@
 {% endblock title %}
 
 {% block content %}
-<div class="container">
+<div class="container-xxl">
+    <div class="row">
+        <div class="col-4">
     <h1>Удаление отзыва</h1>
-    <form action="" method="post">{% csrf_token %}
-      <p>Вы уверены, что хотите удалить отзыв "{{ post.title }}"?</p>
-        <button type="submit" class="save btn btn-default">Удалить запись</button>
-
-                <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
-            <i class="icon-remove icon-large"></i>Отмена
-        </button>
-
-    </form>
+            <div class="form-control mb-3">
+                <form action="" method="post">
+                    {% csrf_token %}
+                    <p>Вы уверены, что хотите удалить отзыв "{{ post.title }}"?</p>
+                    <button type="submit" class="btn btn-danger">Удалить запись</button>
+                    <button type="button" class="btn btn-secondary" id="cancel" onclick="window.history.back()">
+                        <i class="icon-remove icon-large"></i>Отмена
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock content %}

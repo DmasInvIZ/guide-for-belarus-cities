@@ -6,7 +6,10 @@
 {% block content %}
 {% if posts %}
     <div class="container-xxl">
-    <a href="{% url 'new_post' %}">Добавить новый отзыв</a>
+        <button type="button" class="btn btn-primary mt-3 mb-3" onclick="document.location='new_post'">
+            Добавить пост
+        </button>
+<!--    <a href="{% url 'new_post' %}">Добавить новый отзыв</a>-->
         {% if messages %}
         	{% for message in messages %}
           	<div class="alert alert-{{ message.tags }}">
@@ -24,8 +27,14 @@
             <p class="card-text"><small class="text-muted">{{ post.author }} | {{ post.date }}</a></small></p>
             {% if request.user == post.author %}
             <div class="card-text">
-                <small class=text-muted">
-                    <a href='{% url "post_edit" post.pk %}'>Редактировать</a>  |  <a href="{% url 'post_delete' post.pk %}">Удалить</a>
+                <small class="text-muted">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="document.location='/post/{{post.pk}}/edit'">
+                        Редактировать публикацию
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="document.location='/post/{{post.pk}}/delete'">
+                        Удалить публикацию
+                    </button>
+<!--                    <a href='{% url "post_edit" post.pk %}'>Редактировать</a>  |  <a href="{% url 'post_delete' post.pk %}">Удалить</a>-->
                 </small>
             </div>
             {% endif %}

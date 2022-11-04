@@ -19,9 +19,9 @@ class BlogListView(ListView):
 
 
 # детали поста
-class BlogDetailView(DetailView):
-    model = Post
-    template_name = 'post_detail.html'
+# class BlogDetailView(DetailView):
+#     model = Post
+#     template_name = 'post_detail.html'
 
 
 # создание нового поста
@@ -47,6 +47,7 @@ class BlogUpdateView(LoginRequiredMixin, UpdateView):
     permission_required = 'auth.change_user'
     template_name = 'post_edit.html'
     fields = ['title', 'body']  # поля формы
+    success_url = '/blog'
 
     def form_valid(self, form):
         messages.success(self.request, f'Запись изменена')

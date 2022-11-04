@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
+{% load crispy_forms_tags %}
 
  {% block title %}
     <title>Редактировать отзыв</title>
 {% endblock title %}
 
 {% block content %}
-<div class="container">
-    <h1>Редактировать отзыв</h1>
-<form method="POST" class="post-form">{% csrf_token %}
-        {{ form.text | safe }}
-        {{ form.media }}
-        {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
-    </form>
-        <button type="button" class="btn btn-inverse" id="cancel" onclick="window.history.back()">
-            <i class="icon-remove icon-large"></i>Отмена
-        </button>
-</div>
+<div class="container-xxl">
+    <div class="row">
+        <div class="col-8">
+    <legend>Редактировать отзыв</legend>
+            <div class="form-control mb-3">
+                <form method="POST" class="post-form">{% csrf_token %}
+                    {{ form.text | safe }}
+                    {{ form.media }}
+                    {{ form|crispy }}
+                    <button type="submit" class="btn btn-primary">Сохранить</button>
+                    <button type="button" class="btn btn-secondary" id="cancel" onclick="window.history.back()">
+                        <i class="icon-remove icon-large"></i>Отмена
+                    </button>
+                </form>
+                </div>
+            </div>
+        </div>
 {% endblock content %}

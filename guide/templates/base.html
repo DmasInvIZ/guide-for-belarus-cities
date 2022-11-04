@@ -19,7 +19,8 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg bg-light" style="position:sticky; top:0; z-index:100">
+<!--<nav class="navbar navbar-expand-lg bg-light" style="position:sticky; top:0; z-index:100">-->
+    <nav class="navbar navbar-expand-lg bg-light" style="position:sticky; top:0; z-index:100">
   <div class="container-xxl">
     <a class="navbar-brand" href="/">Belarus Guide</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -63,7 +64,6 @@
           	{% else %}
             	<a class="nav-item nav-link" href="/users/login/">Вход</a>
           	{% endif %}
-        </li>
           {% endblock nav5 %}
           {% block nav6 %}
           {% if user.is_superuser %}
@@ -77,12 +77,11 @@
           {% endif %}
           {% endblock nav6 %}
       </ul>
-
+<!--        поиск по сайту-->
       <form class="d-flex" action="{% url 'search_results' %}" role="search" method="get">
         <input class="form-control me-2" type="search" placeholder="Введите город..." aria-label="Search" name="q">
-        <button class="btn btn-outline-success" type="submit">Искать</button>
+        <button class="btn btn-primary" type="submit">Искать</button>
       </form>
-
     </div>
   </div>
 </nav>
@@ -97,11 +96,11 @@
     <div class="card">
           <div class="card-body">
               <div class="container-xxl">
-                <div class="row align-items-end">
+                <div class="row align-items-top">
                     <div class="col">
                         {% block info %}
                       <center>
-                          <td style="height:200px; vertical-align:top;">Информация:</td><br>
+                          <td>Информация:</td><br>
                           <a href="/about/">О проекте</a><br>
                           <a href="/blog/">Отзывы о путешествиях</a>
                       </center>
@@ -110,7 +109,7 @@
                     <div class="col">
                         {% block contacts %}
                       <center>
-                          <td style="height:200px; vertical-align:top;">Контакты:</td><br>
+                          <td>Контакты:</td><br>
                           Телефон - +375 (29) 568-93-21<br>
                           Email - inviz1806@gmail.com
                       </center>
@@ -119,7 +118,7 @@
                     <div class="col">
                         {% block authors %}
                       <center>
-                          <td style="height:200px; vertical-align:top;">Авторы:</td><br>
+                          <td>Авторы:</td><br>
                           vk.com - <a href="https://vk.com/link_viscount/">Коваленя Дмитрий</a>
                       </center>
                         {% endblock authors %}
