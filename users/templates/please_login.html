@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     <title>Нужно авторизоваться</title>
@@ -20,21 +21,26 @@
 {% endblock nav5 %}
 
 {% block content %}
-<div class="container">
-        <legend class="border-bottom mb-3">Чтобы сюда попасть, нужно авторизоваться</legend>
+<div class="container-xxl">
+    <div class="row">
+<!--        <legend class="border-bottom mb-3">Чтобы сюда попасть, нужно авторизоваться</legend>-->
     <div class="col-4">
         <div class="form-control mb-3">
             <form id="add_form" method="POST">
                     {% csrf_token %}
-                    {{form.as_p}}
-                <button type="submit" class="btn btn-primary">Войти</button>
+                    {{ form|crispy }}
+                <button type="submit" class="btn btn-primary mt-3">Войти</button>
             </form>
         </div>
     </div>
+        <div class="col-sm-8" style="text-align: right">
+            <h2>Войдите чтобы просматривать этот контент</h2>
+        </div>
         <div class="border-top pt-3">
             <small class="text-muted">
                 Нужен аккаунт? <a class="ml-2" href="/users/register">Регистрация</a>
             </small>
         </div>
+    </div>
 </div>
 {% endblock content %}

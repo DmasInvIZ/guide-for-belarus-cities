@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
 # регистрация пользователей
 class RegisterUserForm(UserCreationForm):
-    username = forms.CharField(label='Логин', help_text='Используйте простой логин')
+    username = forms.CharField(label='Имя пользователя', help_text='Используйте простой логин')
     email = forms.EmailField(label='Адрес электронной почты', help_text='Используйте реальную почту')
 
     class Meta:

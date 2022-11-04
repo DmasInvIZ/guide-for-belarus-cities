@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block title %}
     <title>Регистрация</title>
@@ -14,41 +15,42 @@
 
 <div class="container-xxl">
     {% if messages %}
-        	{% for message in messages %}
+        {% for message in messages %}
           	<div class="alert alert-{{ message.tags }}">
             	{{ message }}
           	</div>
-        	{% endfor %}
+        {% endfor %}
     {% endif %}
 </div>
 
 <div class="container-xxl">
     <div class="row">
         <legend class="border-bottom mb-3">Регистрация пользователя</legend>
-     <div class="col-4">
-         <div class="form-control mb-3">
-             <form method="POST">
-                 {% csrf_token %}
-                 {{form.as_p}}
-                    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
-             </form>
-         </div>
-     </div>
-     <div class="col-sm-8">
-         <div class="container text-center">
-             <h1>Преимущества регистрации</h1>
-             <p>У зарегистрированных пользователей будет возможность:</p>
-             <li>Просматривать и дополнять информацию о городах</li>
-             <li>Добавлять записи в "отзывы о путешествиях"</li>
-         </div>
-     </div>
-           <div class="border-top pt-3">
-               <small class="text-muted">
-                    Уже есть аккаунт? <a class="ml-2" href="/users/login/">Вход</a>
-            </small>
-           </div>
+        <div class="col-4">
+             <div class="form-control mb-3">
+                 <form method="POST">
+                     {% csrf_token %}
+                     {{ form|crispy }}
+                        <button type="submit" class="btn btn-primary mt-3">Зарегистрироваться</button>
+                 </form>
+             </div>
+        </div>
+        <div class="col-sm-8" style="text-align: right">
+                 <h1>Преимущества регистрации</h1>
+                 <p>У зарегистрированных пользователей будет возможность:</p>
+                 <li>Просматривать и дополнять информацию о городах</li>
+                 <li>Добавлять записи в "отзывы о путешествиях"</li>
+                 <br>
+                 <h4>Все поля обязательны для заполнения</h4>
+             </div>
+        </div>
+                <div class="border-top pt-3">
+                   <small class="text-muted">
+                        Уже есть аккаунт? <a class="ml-2" href="/users/login/">Вход</a>
+                </small>
+               </div>
 
-    </div>
+        </div>
 </div>
 
 {% endblock content %}

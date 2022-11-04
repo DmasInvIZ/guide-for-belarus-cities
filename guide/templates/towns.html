@@ -15,7 +15,13 @@
 
 <section>
     <div class="container-xxl">
-        <a class="link" href="/districts"><-- К областям</a>
+<!--        <a class="link" href="/districts"><&#45;&#45; К областям</a>-->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="#">Главная</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Библиотека</li>
+          </ol>
+        </nav>
         {% if towns %}
             {% for town in towns %}
             <div class="card mb-2">

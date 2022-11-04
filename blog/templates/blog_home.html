@@ -24,7 +24,9 @@
             <p class="card-text"><small class="text-muted">{{ post.author }} | {{ post.date }}</a></small></p>
             {% if request.user == post.author %}
             <div class="card-text">
-                <small class=text-muted"> <a href='{% url "post_edit" post.pk %}'>Редактировать</a>  |  <a href="{% url 'post_delete' post.pk %}">Удалить</a>
+                <small class=text-muted">
+                    <a href='{% url "post_edit" post.pk %}'>Редактировать</a>  |  <a href="{% url 'post_delete' post.pk %}">Удалить</a>
+                </small>
             </div>
             {% endif %}
         </div>

@@ -36,6 +36,8 @@ INSTALLED_APPS = [
     'ckeditor',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -139,7 +141,7 @@ STATICFILES_DIRS = [
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGIN_REDIRECT_URL = '/'
-LOGIN_URL = 'login'  # куда перенаправлять не авторизованных пользователей
+LOGIN_URL = 'please_login'  # куда перенаправлять не авторизованных пользователей
 
 MEDIA_URL = '/media/'
 CKEDITOR_UPLOAD_PATH = "uploads/"
