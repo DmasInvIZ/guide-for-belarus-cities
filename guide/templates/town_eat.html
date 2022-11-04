@@ -25,7 +25,13 @@
 
 <section>
     <div class="container-xxl" style="">
-        <a class="link" href="/districts"><-- К областям</a>
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/districts">Области</a></li>
+            <li class="breadcrumb-item"><a href="/districts/{{towns.id}}">Города</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{town_eat.name}} - Еда</li>
+          </ol>
+        </nav>
         <div class="card mb-2">
           <img src="/{{ town_eat.image }}" class="card-img-top" alt="">
           <div class="card-body">
