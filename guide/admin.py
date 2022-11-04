@@ -5,6 +5,7 @@ from .models import News, Towns, Districts, About, UserTowns
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'author', 'news', 'date')
     search_fields = ('title', 'news')
+    prepopulated_fields = {'slug': ('title',)}
 
 
 class DistrictsAdmin(admin.ModelAdmin):

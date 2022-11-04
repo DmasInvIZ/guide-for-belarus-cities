@@ -4,7 +4,8 @@ from guide.views import NewsView, AboutView, what_to_watch_view, towns_view, Sea
 
 urlpatterns = [
     path('', NewsView.as_view()),  # выводим все новости
-    path('news/<int:pk>/', NewsDetailView.as_view(), name='news_detail'),  # детали новости
+    # path('news/<int:pk>/', NewsDetailView.as_view(), name='news_detail'),  # детали новости
+    path('news/<slug:slug>/', NewsDetailView.as_view(), name='news_detail'),  # детали новости с красивым URl
     path('about/', AboutView.as_view()),  # страница "О проекте"
     path('districts/', what_to_watch_view),     # вывод всех областей страны из бд
     path('towns/<int:pk>', towns_view),   # вывод всех внесенных городов в данную область страны

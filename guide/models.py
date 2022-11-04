@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 
 class News(models.Model):
@@ -10,6 +11,7 @@ class News(models.Model):
     short_news = models.TextField('Короткое описание новости, превью', max_length=1000, default='Подробности внутри')
     news = RichTextField('Текст новости')  # новость
     image = models.ImageField('Иллюстрация', upload_to='static/news', null=True, blank=True)
+    slug = models.SlugField(verbose_name='URL', max_length=160, db_index=True, unique=True)  # название URL транслитом
 
     def __str__(self):
         return self.title
