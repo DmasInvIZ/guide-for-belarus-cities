@@ -5,6 +5,7 @@ from guide.models import UserTowns
 
 # форма отправки публикации админу
 class SuggestForm(forms.ModelForm):
+    # watch = forms.CharField(widget=CKEditorWidget(), label='')
 
     class Meta:
         model = UserTowns

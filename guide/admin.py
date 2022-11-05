@@ -16,6 +16,7 @@ class DistrictsAdmin(admin.ModelAdmin):
 class TownsAdmin(admin.ModelAdmin):
     list_display = ('name', 'district', 'short_info', 'watch', 'eat', 'sleep')
     search_fields = ('name',)
+    prepopulated_fields = {'slug': ('name',)}
 
 
 class AboutAdmin(admin.ModelAdmin):

@@ -46,6 +46,7 @@ class Towns(models.Model):
         # где поесть
     sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='') \
         # где поспать
+    slug = models.SlugField(verbose_name='URL', max_length=160, db_index=True, unique=True)  # не используется
 
     def __str__(self):
         return self.name
