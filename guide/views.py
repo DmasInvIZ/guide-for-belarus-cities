@@ -49,15 +49,13 @@ def what_to_watch_view(request):
 # выводим список всех внесенных городов в запрошенной области
 def towns_view(request, pk):
     towns = Towns.objects.filter(district_id=pk).order_by('name')
-    area_name = Districts.objects.get(id=pk)
-    return render(
-        request,
-        'towns.html',
-        context={
-            'towns': towns,
-            'area_name': area_name
-        }
-    )
+    global area_step  # глобальная переменная "область" для навигации
+    area_step = Districts.objects.get(id=pk)
+    context = {
+        'towns': towns,
+        'area_step': area_step,
+    }
+    return render(request, 'towns.html', context)
 
 
 # выводим город по запросу (что посмотреть)
@@ -65,13 +63,13 @@ def towns_view(request, pk):
 def town_watch_view(request, pk):
     town = Towns.objects.get(id=pk)
     pub_town_watch = UserTowns.objects.filter(town_id=pk, is_published=True)  # ищет запись в таблице предложений от юзеров (что посомтреть)
+    global town_step  # глобальная переменная "город" для навигации
     town_step = Towns.objects.get(id=pk)
-    # area_step = Districts.objects.get(id=pk)
     context = {
         'town_watch': town,
         'pub_town_watch': pub_town_watch,
         'town_step': town_step,
-        # 'area_name': area_step
+        'area_step': area_step,
     }
     return render(request, 'town_watch.html', context)
 
@@ -81,11 +79,11 @@ def town_watch_view(request, pk):
 def town_eat_view(request, pk):
     town = Towns.objects.get(id=pk)
     pub_town_eat = UserTowns.objects.filter(town_id=pk, is_published=True)  # ищет запись в таблице предложений от юзеров (где поесть)
-    town_step = Towns.objects.get(id=pk)
     context = {
         'town_eat': town,
         'pub_town_eat': pub_town_eat,
-        'town_step': town_step
+        'town_step': town_step,
+        'area_step': area_step,
     }
     return render(request, 'town_eat.html', context)
 
@@ -95,11 +93,11 @@ def town_eat_view(request, pk):
 def town_sleep_view(request, pk):
     town = Towns.objects.get(id=pk)
     pub_town_sleep = UserTowns.objects.filter(town_id=pk, is_published=True)  # ищет запись в таблице предложений от юзеров (где поспать)
-    town_step = Towns.objects.get(id=pk)
     context = {
         'town_sleep': town,
         'pub_town_sleep': pub_town_sleep,
-        'town_step': town_step
+        'town_step': town_step,
+        'area_step': area_step,
     }
     return render(request, 'town_sleep.html', context)
 
