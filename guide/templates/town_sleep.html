@@ -25,6 +25,7 @@
 
 <section>
     <div class="container-xxl" style="">
+        <div class="mt-2">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/districts">Области</a></li>
@@ -32,6 +33,7 @@
             <li class="breadcrumb-item active" aria-current="page">{{town_sleep.name}} - Отдых</li>
           </ol>
         </nav>
+        </div>
         <div class="card mb-2">
           <img src="/{{ town_sleep.image }}" class="card-img-top" alt="">
           <div class="card-body">
@@ -41,7 +43,7 @@
         </div>
     </div>
     {% for pub in pub_town_sleep %}
-        <div class="container-sm" style="">
+        <div class="container-xxl" style="">
         <div class="card mb-2">
           <div class="card-body">
             <p class="card-text">{{ pub.sleep|safe }}</p>

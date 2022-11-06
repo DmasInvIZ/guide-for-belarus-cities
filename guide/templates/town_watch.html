@@ -24,15 +24,20 @@
 {% block content %}
 
 <section>
-    <div class="container-xxl" style="">
+    <div class="container-xxl">
+        <div class="mt-2">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/districts">Области</a></li>
-            <li class="breadcrumb-item"><a href="/districts/{{towns.id}}">Города</a></li>
+            <li class="breadcrumb-item"><a href="/towns/{{district_id}}">Города</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{town_watch.name}} - Достопримечательности</li>
           </ol>
         </nav>
+        </div>
         <div class="card mb-2">
+            {% for i in districts %}
+            {{ i.title }}
+            {% endfor %}
           <img src="/{{ town_watch.image }}" class="card-img-top" alt="">
           <div class="card-body">
             <p class="card-text">{{ town_watch.watch|safe }}</p>
@@ -41,7 +46,7 @@
         </div>
     </div>
         {% for pub in pub_town_watch %}
-        <div class="container-sm" style="">
+        <div class="container-xxl">
         <div class="card mb-2">
           <div class="card-body">
             <p class="card-text">{{ pub.watch|safe }}</p>
