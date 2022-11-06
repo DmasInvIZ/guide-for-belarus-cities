@@ -10,10 +10,10 @@
 <div class="container-xxl">
       <div class="row">
           <div class="col-sm-3">
-                    <ul class="menu">
-                        <h5>Меню сайта</h5>
+                    <ul class="menu mt-3">
+                        <h5>Меню сайта:</h5>
                         {% for i in districts %}
-                      <li><a href="/districts/{{i.name}}">{{i.name}}</a></li>
+                      <li><a href="/towns/{{i.id}}">{{i.name}}</a></li>
                         {% endfor %}
                     </ul>
           </div>

@@ -25,15 +25,17 @@
 
 <section>
     <div class="container-xxl">
+
         <div class="mt-2">
-        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/districts">Области</a></li>
-            <li class="breadcrumb-item"><a href="/towns/{{district_id}}">Города</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{town_watch.name}} - Достопримечательности</li>
-          </ol>
-        </nav>
+            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/districts">Области</a></li>
+                <li class="breadcrumb-item"><a href="/towns/{{town_step.district_id}}">Города</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{town_watch.name}} - Достопримечательности</li>
+              </ol>
+            </nav>
         </div>
+
         <div class="card mb-2">
             {% for i in districts %}
             {{ i.title }}

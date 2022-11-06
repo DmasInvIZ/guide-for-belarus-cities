@@ -14,29 +14,38 @@
 {% block content %}
 
 <section>
-    <div class="container-xxl">
-        {% if districts %}
+<div class="container-xxl">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul class="menu mt-3">
+                <h5>Меню сайта:</h5>
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            {% if districts %}
             {% for distr in districts %}
             <div class="card mb-2">
-              <img src="/{{ distr.image }}" class="card-img-top" alt="">
-              <div class="card-body">
-                <h5 class="card-title">
-                    <a href="/towns/{{ distr.id }}">{{ distr.name }}</a>
-                </h5>
-                <p class="card-text">{{ distr.desk|safe }}</p>
-              </div>
+                <img src="/{{ distr.image }}" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        <a href="/towns/{{ distr.id }}">{{ distr.name }}</a>
+                    </h5>
+                    <p class="card-text">{{ distr.desk|safe }}</p>
+                </div>
             </div>
             {% endfor %}
-        {% else %}
-        <div class="card mb-2">
-          <div class="card-body">
-            <h5 class="card-title">Страница со списком областей Беларуси</h5>
-            <p class="card-text">Информация добавляется администратором сайта. Чтобы добавлять посты в этот раздел, <a href="/admin">авторизуйтесь</a> как администратор</p>
-            <p class="card-text" style="text-align: right"><small class="text-muted">Администрация</small></p>
-          </div>
+            {% else %}
+            <div class="card mb-2">
+                <div class="card-body">
+                    <h5 class="card-title">Страница со списком областей Беларуси</h5>
+                    <p class="card-text">Информация добавляется администратором сайта. Чтобы добавлять посты в этот раздел, <a href="/admin">авторизуйтесь</a> как администратор</p>
+                    <p class="card-text" style="text-align: right"><small class="text-muted">Администрация</small></p>
+                </div>
+            </div>
+            {% endif %}
         </div>
-        {% endif %}
     </div>
+</div>
 </section>
 
 {% endblock content %}

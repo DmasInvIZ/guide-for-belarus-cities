@@ -19,6 +19,11 @@ class NewsView(ListView):
     context_object_name = 'news'
     ordering = '-date'  # сортировка новостей по дате создания (новые сверху)
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['districts'] = Districts.objects.all().order_by('name')
+        return context
+
 
 # детали новостей
 class NewsDetailView(DetailView):
@@ -52,9 +57,11 @@ def towns_view(request, pk):
 def town_watch_view(request, pk):
     town = Towns.objects.get(id=pk)
     pub_town_watch = UserTowns.objects.filter(town_id=pk, is_published=True)  # убран параметр town_id=pk
+    town_step = Towns.objects.get(id=pk)
     context = {
         'town_watch': town,
         'pub_town_watch': pub_town_watch,
+        'town_step': town_step
     }
     return render(request, 'town_watch.html', context)
 
