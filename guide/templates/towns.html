@@ -13,56 +13,51 @@
 
 {% block content %}
 
-<section>
-    <div class="container-xxl">
-        <div class="row">
-            <div class="col-sm-3">
-                <div class="card mb-2">
-                    <ul class="menu mt-3">
-                        <h5>Меню сайта:</h5>
-                        {{area_step.name}}
-                        {% for i in towns %}
-                        <li><a href="town_watch/{{ i.id }}">{{i.name}}</a></li>
-                        {% endfor %}
-                    </ul>
-                </div>
+<div class="container-xxl">
+    <div class="row">
+        <div class="col-sm-3">
+            <ul class="menu mt-3">
+                <h5>Меню сайта</h5>
+                {{area_step.name}}:
+                {% for i in towns %}
+                <li><a href="town_watch/{{ i.id }}">{{i.name}}</a></li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div class="col-sm-9">
+            <div class="mt-2">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{area_step.name}}</li>
+                    </ol>
+                </nav>
             </div>
-            <div class="col-sm-9">
-                <div class="mt-2">
-                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">{{area_step.name}}</li>
-                        </ol>
-                    </nav>
-                </div>
-
             {% if towns %}
-                {% for town in towns %}
-                <div class="card mb-2">
-                  <img src="/{{ town.image }}" class="card-img-top" alt="">
-                  <div class="card-body">
+            {% for town in towns %}
+            <div class="card mb-2">
+                <img src="/{{ town.image }}" class="card-img-top" alt="">
+                <div class="card-body">
                     <h5 class="card-title">
                         <a href="town_watch/{{ town.id }}">{{ town.name }}</a>
                     </h5>
                     <p class="card-text">{{ town.short_info }}</p>
-                  </div>
                 </div>
-                {% endfor %}
+            </div>
+            {% endfor %}
             {% else %}
             <div class="card mb-2">
-              <div class="card-body">
+                <div class="card-body">
                 <h5 class="card-title">Страница со списком городов в области</h5>
                 <p class="card-text">Информация добавляется администратором сайта и дополняется пользователями через личный
                     кабинет через премодерацию. Чтобы добавлять посты в этот раздел, <a href="/admin">авторизуйтесь</a>
                     как администратор</p>
                 <p class="card-text" style="text-align: right"><small class="text-muted">Администрация</small></p>
-              </div>
+                </div>
             </div>
             {% endif %}
-            </div>
         </div>
     </div>
-</section>
+</div>
 
 {% endblock content %}

@@ -19,8 +19,8 @@
 
 <body>
 
-<!--<nav class="navbar navbar-expand-lg bg-light" style="position:sticky; top:0; z-index:100">-->
-    <nav class="navbar navbar-expand-lg bg-light" style="position:sticky; top:0; z-index:100">
+<header>
+<nav class="navbar navbar-expand-lg bg-light" style="position:sticky; top:0; z-index:100">
   <div class="container-xxl">
     <a class="navbar-brand" href="/">Belarus Guide</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
+<!--            элементы Navbar-->
           {% block nav1 %}
         <li class="nav-item">
           <a class="nav-link" href="/districts/">Что посмотреть</a>
@@ -85,13 +85,16 @@
     </div>
   </div>
 </nav>
+</header>
 
+<section>
 {% block content %}
 
 {% endblock content %}
+</section>
 
-{% block footer %}
 <footer>
+{% block footer %}
 <div class="footer">
     <div class="card">
           <div class="card-body">
@@ -128,9 +131,9 @@
           </div>
     </div>
 </div>
-</footer>
 
 {% endblock footer %}
+</footer>
 
 </body>
 

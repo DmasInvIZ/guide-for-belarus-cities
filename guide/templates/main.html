@@ -6,16 +6,16 @@
 {% endblock title %}
 
 {% block content %}
-<section>
+
 <div class="container-xxl">
       <div class="row">
           <div class="col-sm-3">
-                    <ul class="menu mt-3">
-                        <h5>Меню сайта:</h5>
-                        {% for i in districts %}
-                      <li><a href="/towns/{{i.id}}">{{i.name}}</a></li>
-                        {% endfor %}
-                    </ul>
+              <ul class="menu mt-3">
+                  <h5>Меню сайта</h5>
+                  {% for i in districts %}
+                  <li><a href="/towns/{{i.id}}">{{i.name}}</a></li>
+                  {% endfor %}
+              </ul>
           </div>
           <div class="col-sm-9">
               {% if news %}
@@ -44,5 +44,5 @@
           </div>
       </div>
 </div>
-</section>
+
 {% endblock content %}
