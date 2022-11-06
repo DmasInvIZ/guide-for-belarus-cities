@@ -24,17 +24,15 @@
                     {% endfor %}
                 </ul>
             </div>
-
             <div class="col-sm-9">
                 <div class="mt-2">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/districts">Области</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Города</li>
-                            </ol>
+                            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">{{area_step.name}}</li>
+                        </ol>
                     </nav>
                 </div>
-
             {% if towns %}
                 {% for town in towns %}
                 <div class="card mb-2">

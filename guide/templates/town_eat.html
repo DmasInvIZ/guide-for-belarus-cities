@@ -24,12 +24,12 @@
 {% block content %}
 
 <section>
-    <div class="container-xxl" style="">
+    <div class="container-xxl">
         <div class="mt-2">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/districts">Области</a></li>
-            <li class="breadcrumb-item"><a href="/districts/{{towns.id}}">Города</a></li>
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/towns/{{town_step.district_id}}">Города</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{town_eat.name}} - Еда</li>
           </ol>
         </nav>
@@ -43,7 +43,7 @@
         </div>
     </div>
     {% for pub in pub_town_eat %}
-        <div class="container-xxl" style="">
+        <div class="container-xxl">
         <div class="card mb-2">
           <div class="card-body">
             <p class="card-text">{{ pub.eat|safe }}</p>

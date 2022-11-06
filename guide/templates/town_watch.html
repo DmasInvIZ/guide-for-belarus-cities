@@ -24,39 +24,35 @@
 {% block content %}
 
 <section>
-    <div class="container-xxl">
-
-        <div class="mt-2">
-            <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-              <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/districts">Области</a></li>
+<div class="container-xxl">
+    <div class="mt-2">
+        <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
                 <li class="breadcrumb-item"><a href="/towns/{{town_step.district_id}}">Города</a></li>
                 <li class="breadcrumb-item active" aria-current="page">{{town_watch.name}} - Достопримечательности</li>
-              </ol>
-            </nav>
-        </div>
-
-        <div class="card mb-2">
-            {% for i in districts %}
-            {{ i.title }}
-            {% endfor %}
-          <img src="/{{ town_watch.image }}" class="card-img-top" alt="">
-          <div class="card-body">
+            </ol>
+        </nav>
+    </div>
+    <div class="card mb-2">
+        <img src="/{{ town_watch.image }}" class="card-img-top" alt="">
+        <div class="card-body">
             <p class="card-text">{{ town_watch.watch|safe }}</p>
-              <p class="card-text" style="text-align: right"><small class="text-muted">Добавлено Администратором</small></p>
-          </div>
+            <p class="card-text" style="text-align: right"><small class="text-muted">Добавлено Администратором</small></p>
         </div>
     </div>
-        {% for pub in pub_town_watch %}
-        <div class="container-xxl">
+</div>
+    {% for pub in pub_town_watch %}
+    <div class="container-xxl">
         <div class="card mb-2">
-          <div class="card-body">
-            <p class="card-text">{{ pub.watch|safe }}</p>
-              <p class="card-text"><small class="text-muted">Добавлено пользователем {{ pub.author }}</small></p>
-          </div>
+            <div class="card-body">
+                <p class="card-text">{{ pub.watch|safe }}</p>
+                <p class="card-text"><small class="text-muted">Добавлено пользователем {{ pub.author }}</small></p>
+
+            </div>
         </div>
-        </div>
-        {% endfor %}
+    </div>
+    {% endfor %}
 </section>
 
 {% endblock content %}
