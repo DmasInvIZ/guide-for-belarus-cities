@@ -15,29 +15,29 @@
     {% endfor %}
 {% endif %}
     <div class="row">
-    <div class="col-8">
-        <div class="form-control mb-3">
-            <form method="POST" class="post-form">
-                {% csrf_token %}
-                {{ form.text | safe }}
-                {{ form.media }}
-                {{form|crispy}}
-                <button type="submit" class="save btn btn-primary mt-2">Отправить</button>
+        <div class="col-8">
+            <div class="form-control mb-3">
+                <form method="POST" class="post-form">
+                    {% csrf_token %}
+                    {{ form.text | safe }}
+                    {{ form.media }}
+                    {{form|crispy}}
+                    <button type="submit" class="save btn btn-primary mt-2">Отправить</button>
 <!--            <button type="button" class="btn btn-secondary mt-2" id="cancel" onclick="window.history.back()">-->
 <!--                <i class="icon-remove icon-large"></i>Отмена-->
 <!--            </button>-->
-            </form>
-            <h5>*Все поля обязательны для заполнения</h5>
+                    <small>*Все поля обязательны для заполнения</small>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-4" style="text-align: right">
+            <legend class="border-bottom mb-3">Предложение публикации</legend>
+                <h3>Правила заполнения формы:</h3>
+                <li>Первое</li>
+                <li>Второе</li>
+                <li>Пятое</li>
+                <li>Десятое</li>
         </div>
     </div>
-    <div class="col-sm-4" style="text-align: right">
-        <legend class="border-bottom mb-3">Предложение публикации</legend>
-            <h3>Правила заполнения формы:</h3>
-            <li>Первое</li>
-            <li>Второе</li>
-            <li>Пятое</li>
-            <li>Десятое</li>
-    </div>
-    </div>
-</div><br>
+</div>
 {% endblock content %}

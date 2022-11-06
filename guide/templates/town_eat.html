@@ -23,33 +23,33 @@
 
 {% block content %}
 
-    <div class="container-xxl">
-        <div class="mt-2">
+<div class="container-xxl">
+    <div class="mt-2">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/">Главная</a></li>
-              <li class="breadcrumb-item"><a href="/towns/{{town_step.district_id}}">{{area_step.name}}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{town_eat.name}} - Еда</li>
-          </ol>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/">Главная</a></li>
+                <li class="breadcrumb-item"><a href="/towns/{{town_step.district_id}}">{{area_step.name}}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{town_eat.name}} - Еда</li>
+            </ol>
         </nav>
-        </div>
-        <div class="card mb-2">
-          <img src="/{{ town_eat.image }}" class="card-img-top" alt="">
-          <div class="card-body">
+    </div>
+    <div class="card mb-2">
+        <img src="/{{ town_eat.image }}" class="card-img-top" alt="">
+        <div class="card-body">
             <p class="card-text">{{ town_eat.eat|safe }}</p>
-              <p class="card-text" style="text-align: right"><small class="text-muted">Добавлено Администратором</small></p>
-          </div>
+            <p class="card-text" style="text-align: right"><small class="text-muted">Добавлено Администратором</small></p>
         </div>
     </div>
-    {% for pub in pub_town_eat %}
-        <div class="container-xxl">
-        <div class="card mb-2">
-          <div class="card-body">
+</div>
+{% for pub in pub_town_eat %}
+<div class="container-xxl">
+    <div class="card mb-2">
+        <div class="card-body">
             <p class="card-text">{{ pub.eat|safe }}</p>
-              <p class="card-text"><small class="text-muted">Добавлено пользователем {{ pub.author }}</small></p>
-          </div>
+            <p class="card-text"><small class="text-muted">Добавлено пользователем {{ pub.author }}</small></p>
         </div>
-        </div>
-    {% endfor %}
+    </div>
+</div>
+{% endfor %}
 
 {% endblock content %}

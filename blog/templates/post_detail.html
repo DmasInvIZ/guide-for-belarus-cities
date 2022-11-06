@@ -6,35 +6,30 @@
 
 {% block content %}
 
-<div class="container-sm">
-<div class="container">
-  <div class="nav-right">
-      <a href="{% url 'new_post' %}">Добавить новый отзыв</a>
-{% if messages %}
-        	{% for message in messages %}
+<div class="container-xxl">
+    <div class="nav-right">
+        <a href="{% url 'new_post' %}">Добавить новый отзыв</a>
+        {% if messages %}
+        {% for message in messages %}
           	<div class="alert alert-{{ message.tags }}">
             	{{ message }}
           	</div>
-        	{% endfor %}
-{% endif %}
-</div>
-
-   <div class="card mb-2">
-      <div class="card-body">
+        {% endfor %}
+        {% endif %}
+    </div>
+    <div class="card mb-2">
+        <div class="card-body">
         <h5 class="card-title">{{ post.title }}</h5>
-          <p class="card-text">{{ post.body|safe }}</p>
-          <p class="card-text"><small class="text-muted">{{ post.author }} | {{ post.date }}</small></p>
-      </div>
-   </div>
-
+            <p class="card-text">{{ post.body|safe }}</p>
+            <p class="card-text"><small class="text-muted">{{ post.author }} | {{ post.date }}</small></p>
+        </div>
+    </div>
     {% if request.user == post.author %}
     -- Управление постом --<br>
       <a href='{% url "post_edit" post.pk %}'>Редактировать отзыв</a> <br>
       <a href="{% url 'post_delete' post.pk %}">Удалить отзыв</a> <br>
     ----------------------------<br>
     {% endif %}
-
-  <a href='{% url "blog_home" %}'>Смотреть все посты</a>
-</div>
+    <a href='{% url "blog_home" %}'>Смотреть все посты</a>
 </div>
 {% endblock content %}

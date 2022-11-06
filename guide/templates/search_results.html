@@ -6,31 +6,16 @@
 {% endblock title %}
 
 {% block content %}
-
-<section>
-
-    <div class="container-sm" style="max-width: 60rem;">
-        {% for town in towns_list %}
-        <h1>Вот что нашлось</h1>
-        <a class="link" href="/districts"><-- К областям</a>
-        <div class="card mb-2">
-          <div class="card-body">
-            <p class="card-text"><a href="/town_watch/{{ town.id }}">{{ town.name }}</a></p>
-          </div>
+<div class="container-xxl">
+    <h1>Вот что нашлось</h1>
+    {% for town in towns_list %}
+    <a class="link" href="/districts"><-- К областям</a>
+    <div class="card mb-2">
+        <div class="card-body">
+            <p class="card-text"><a href="/towns/town_watch/{{ town.id }}">{{ town.name }}</a></p>
         </div>
-        {% endfor %}
-
-        {% for distr in districts_list %}
-        <h1>Вот что нашлось</h1>
-        <a class="link" href="/districts"><-- К областям</a>
-        <div class="card mb-2">
-          <div class="card-body">
-            <p class="card-text"><a href="/district/{{ distr.id }}">{{ distr.name }}</a></p>
-          </div>
-        </div>
-        {% endfor %}
     </div>
-
-</section>
+    {% endfor %}
+</div>
 
 {% endblock content %}

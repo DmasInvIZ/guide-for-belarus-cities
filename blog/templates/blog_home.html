@@ -3,20 +3,21 @@
 {% block title %}
 <title> Отзывы </title>
 {% endblock title %}
+
 {% block content %}
 {% if posts %}
-    <div class="container-xxl">
-        <button type="button" class="btn btn-primary mt-3 mb-3" onclick="document.location='new_post'">
-            Добавить пост
-        </button>
+<div class="container-xxl">
+    <button type="button" class="btn btn-primary mt-3 mb-3" onclick="document.location='new_post'">
+        Добавить пост
+    </button>
 <!--    <a href="{% url 'new_post' %}">Добавить новый отзыв</a>-->
-        {% if messages %}
-        	{% for message in messages %}
-          	<div class="alert alert-{{ message.tags }}">
-            	{{ message }}
-          	</div>
-        	{% endfor %}
-        {% endif %}
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
 </div>
 {% for post in posts %}
 <div class="container-xxl">
