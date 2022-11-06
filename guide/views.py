@@ -2,10 +2,10 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from django.views.generic import ListView, DetailView
 from django.shortcuts import render, redirect
-from .models import About, UserTowns
+
 from django.utils.decorators import method_decorator
 
-from guide.models import News, Districts, Towns
+from .models import *
 
 from .forms import SuggestForm
 

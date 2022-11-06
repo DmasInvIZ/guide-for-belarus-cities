@@ -10,11 +10,12 @@
 <div class="container-xxl">
       <div class="row">
           <div class="col-sm-3">
-                  <p>Здесь будет меню с выбором областей и городов</p>
-                  <p>Или другое меню я еще не определился</p>
-                    {% for i in districts %}
-<!--                    <p><a href="/district/{{i.id}}">{{i.name}}</a></p>-->
-                    {% endfor %}
+                    <ul class="menu">
+                        <h5>Меню сайта</h5>
+                        {% for i in districts %}
+                      <li><a href="/districts/{{i.name}}">{{i.name}}</a></li>
+                        {% endfor %}
+                    </ul>
           </div>
           <div class="col-sm-9">
               {% if news %}
