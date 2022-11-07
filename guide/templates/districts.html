@@ -19,20 +19,20 @@
             <ul class="menu mt-3">
                   <h5>Меню сайта</h5>
                   {% for i in districts %}
-                  <li><a href="/towns/{{i.id}}">{{i.name}}</a></li>
+                  <li><a href="towns/{{i.id}}">{{i.name}}</a></li>
                   {% endfor %}
             </ul>
         </div>
         <div class="col-sm-9">
             {% if districts %}
-            {% for distr in districts %}
+            {% for i in districts %}
             <div class="card mb-2">
-                <img src="/{{ distr.image }}" class="card-img-top" alt="">
+                <img src="/{{ i.image }}" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="towns/{{ distr.id }}">{{ distr.name }}</a>
+                        <a href="/towns/{{ i.id }}">{{ i.name }}</a>
                     </h5>
-                    <p class="card-text">{{ distr.desk|safe }}</p>
+                    <p class="card-text">{{ i.desk|safe }}</p>
                 </div>
             </div>
             {% endfor %}
