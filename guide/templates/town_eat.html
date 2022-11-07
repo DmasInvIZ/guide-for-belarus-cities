@@ -7,17 +7,17 @@
 
           {% block nav1 %}
         <li class="nav-item">
-          <a class="nav-link" href="/towns/town_watch/{{town_eat.id}}">Что посмотреть</a>
+          <a class="nav-link" href="/districts/towns/town_watch/{{town_eat.id}}">Что посмотреть</a>
         </li>
           {% endblock nav1 %}
           {% block nav2 %}
         <li class="nav-item">
-          <a class="nav-link disabled" href="/towns/town_eat/{{town_eat.id}}">Где поесть</a>
+          <a class="nav-link disabled" href="/districts/towns/town_eat/{{town_eat.id}}">Где поесть</a>
         </li>
           {% endblock nav2 %}
           {% block nav3 %}
         <li class="nav-item">
-          <a class="nav-link" href="/towns/town_sleep/{{town_eat.id}}">Где переночевать</a>
+          <a class="nav-link" href="/districts/towns/town_sleep/{{town_eat.id}}">Где переночевать</a>
         </li>
           {% endblock nav3 %}
 
@@ -28,7 +28,7 @@
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                <li class="breadcrumb-item"><a href="/towns/{{town_eat.district_id}}">Область</a>(не работает)</li>
+                <li class="breadcrumb-item"><a href="/districts/towns/{{town_eat.district_id}}">Область</a>(не работает)</li>
                 <li class="breadcrumb-item active" aria-current="page">{{town_eat.name}} - Еда</li>
             </ol>
         </nav>
