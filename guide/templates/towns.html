@@ -18,7 +18,6 @@
         <div class="col-sm-3">
             <ul class="menu mt-3">
                 <h5>Меню сайта</h5>
-                {{area_step.name}}:
                 {% for i in towns %}
                 <li><a href="town_watch/{{ i.id }}">{{i.name}}</a></li>
                 {% endfor %}
@@ -28,8 +27,8 @@
             <div class="mt-2">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="/">Главная</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">{{area_step.name}}</li>
+                <li class="breadcrumb-item"><a href="/districts">Области</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">{{towns.name}}текущая область</li>
                     </ol>
                 </nav>
             </div>
