@@ -7,15 +7,23 @@
 
 {% block content %}
 <div class="container-xxl">
-    <h1>Вот что нашлось</h1>
-    {% for town in towns_list %}
-    <a class="link" href="/districts"><-- К областям</a>
+    <legend>Страница поиска</legend>
+    {% if towns_list %}
     <div class="card mb-2">
         <div class="card-body">
-            <p class="card-text"><a href="/towns/town_watch/{{ town.id }}">{{ town.name }}</a></p>
+            {% for town in towns_list %}
+            <p class="card-text"><a href="/districts/towns/town_watch/{{ town.id }}">{{ town.name }}</a></p>
+            {% endfor %}
         </div>
     </div>
-    {% endfor %}
+    {% else %}
+    <div class="card mb-2">
+        <div class="card-body">
+            <p> <h5>По вашему запросу ничего не нашлось...</h5> </p>
+            <p><small>Попробуйте изменить параметры поиска</small></p>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
 {% endblock content %}
