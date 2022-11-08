@@ -19,7 +19,7 @@
             <ul class="menu mt-3">
                 <h5>Меню сайта</h5>
                 {% for i in towns %}
-                <li><a href="town_watch/{{ i.id }}">{{i.name}}</a></li>
+                <li><a href="town_watch/{{ i.town_slug }}">{{i.name}}</a></li>
                 {% endfor %}
             </ul>
         </div>
@@ -38,7 +38,7 @@
                 <img src="/{{ town.image }}" class="card-img-top" alt="">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="town_watch/{{ town.id }}">{{ town.name }}</a>
+                        <a href="/town_watch/{{ town.town_slug }}">{{ town.name }}</a>
                     </h5>
                     <p class="card-text">{{ town.short_info }}</p>
                 </div>

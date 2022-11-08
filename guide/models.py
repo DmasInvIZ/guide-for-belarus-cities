@@ -25,6 +25,7 @@ class Districts(models.Model):
     name = models.CharField('Область', max_length=50)  # название области
     image = models.ImageField('Фотография', upload_to='static/districts', null=True, blank=True)
     desk = RichTextField('Описание')  # описание области
+    area_slug = models.SlugField(verbose_name='URL', primary_key=True, max_length=160, db_index=True, unique=True)
 
     def __str__(self):
         return self.name
@@ -46,7 +47,7 @@ class Towns(models.Model):
         # где поесть
     sleep = RichTextField('Список и описание мет для отдыха - гостиниц, кемпингов, хостелов', default='') \
         # где поспать
-    slug = models.SlugField(verbose_name='URL', max_length=160, db_index=True, unique=True)  # не используется
+    town_slug = models.SlugField(primary_key=True, verbose_name='URL', max_length=160, db_index=True, unique=True)
 
     def __str__(self):
         return self.name

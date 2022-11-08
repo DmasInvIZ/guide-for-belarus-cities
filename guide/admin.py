@@ -11,12 +11,13 @@ class NewsAdmin(admin.ModelAdmin):
 class DistrictsAdmin(admin.ModelAdmin):
     list_display = ('name', 'desk')
     search_fields = ('name', 'desk')
+    prepopulated_fields = {'area_slug': ('name',)}
 
 
 class TownsAdmin(admin.ModelAdmin):
     list_display = ('name', 'district', 'short_info', 'watch', 'eat', 'sleep')
     search_fields = ('name',)
-    prepopulated_fields = {'slug': ('name',)}
+    prepopulated_fields = {'town_slug': ('name',)}
 
 
 class AboutAdmin(admin.ModelAdmin):
