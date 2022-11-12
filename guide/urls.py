@@ -8,7 +8,7 @@ urlpatterns = [
     path('news/<slug:slug>/', NewsDetailView.as_view(), name='news_detail'),  # детали новости с красивым URl
     path('about/', AboutView.as_view()),  # страница "О проекте"
     path('districts/', what_to_watch_view, name='districts'),  # вывод всех областей страны из бд
-    path('<slug:slug>', towns_view, name='towns'),  # вывод всех внесенных городов в данную область страны
+    path('<slug:slug>/', towns_view, name='towns'),  # вывод всех внесенных городов в данную область страны
     # path('towns/<int:pk>', TownsView.as_view()),
     path('town_watch/<slug:slug>', town_watch_view, name='town_watch'),  # вывод города по запросу (что посмотреть)
     path('town_eat/<slug:slug>', town_eat_view, name='town_eat'),  # вывод города по запросу (где поесть)
