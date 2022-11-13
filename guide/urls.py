@@ -17,5 +17,5 @@ urlpatterns = [
     # path('town_eat/<int:pk>', TownEatView.as_view(), name='town_eat'),  #####
     # path('town_sleep/<int:pk>', TownSleepView.as_view(), name='town_sleep'),  ####
     path('users/profile/suggest/', publish_suggest_view),  # предложения пользователей
-    path('search/', SearchResultsView.as_view(), name='search_results'),  # страница поиска
+    path('guide/search/', SearchResultsView.as_view(), name='search_results'),  # страница поиска
 ]
