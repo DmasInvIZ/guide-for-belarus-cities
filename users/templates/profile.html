@@ -30,12 +30,9 @@
         <div class="media-body">
           <h2 class="account-heading">{{ user.username }}</h2>
           <p class="text-secondary">{{ user.email }}</p>
-<!--            Можно заполнить через админ-панель-->
-            {% if user.first_name or user.last_name %}
+<!--            Можно заполнить через админ-панель -->
                 Ваше имя - {{user.first_name}}<br>
                 Ваша фамилия - {{user.last_name}}<br>
-            {% else %}
-            {% endif %}
             <br>
             <a href=/users/profile/suggest/>Предложить публикацию</a><br>
             <a href="/users/register_next">Дополнить личную информацию</a> (вызывает ошибку)
