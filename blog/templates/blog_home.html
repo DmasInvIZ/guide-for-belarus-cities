@@ -7,7 +7,7 @@
 {% block content %}
 {% if posts %}
 <div class="container-xxl">
-    <button type="button" class="btn btn-primary mt-3 mb-3" onclick="document.location='new_post'">
+    <button type="button" class="btn btn-primary mt-3 mb-3" onclick="document.location='/blog/new_post/'">
         Добавить пост
     </button>
 <!--    <a href="{% url 'new_post' %}">Добавить новый отзыв</a>-->
@@ -29,10 +29,10 @@
             {% if request.user == post.author %}
             <div class="card-text">
                 <small class="text-muted">
-                    <button type="button" class="btn btn-primary btn-sm" onclick="document.location='/post/{{post.pk}}/edit'">
+                    <button type="button" class="btn btn-primary btn-sm" onclick="document.location='/blog/post/{{post.pk}}/edit'">
                         Редактировать публикацию
                     </button>
-                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="document.location='/post/{{post.pk}}/delete'">
+                    <button type="button" class="btn btn-outline-danger btn-sm" onclick="document.location='/blog/post/{{post.pk}}/delete'">
                         Удалить публикацию
                     </button>
 <!--                    <a href='{% url "post_edit" post.pk %}'>Редактировать</a>  |  <a href="{% url 'post_delete' post.pk %}">Удалить</a>-->
@@ -50,4 +50,12 @@
 {% endif %}
 {% endblock content %}
 
-
+{% block info %}
+<div class="col">
+    <center>
+        <td>Информация:</td><br>
+        <a href="/about/">О проекте</a><br>
+        <a>Отзывы о путешествиях</a>
+    </center>
+</div>
+{% endblock info %}

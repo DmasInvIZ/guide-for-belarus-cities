@@ -102,32 +102,32 @@
           <div class="card-body">
               <div class="container-xxl">
                 <div class="row align-items-top">
+                    {% block info %}
                     <div class="col">
-                        {% block info %}
                       <center>
                           <td>Информация:</td><br>
                           <a href="/about/">О проекте</a><br>
-                          <a href="/blog/">Отзывы о путешествиях</a>
+                          <a href="/blog/home/">Отзывы о путешествиях</a>
                       </center>
-                        {% endblock info %}
                     </div>
+                    {% endblock info %}
+                    {% block contacts %}
                     <div class="col">
-                        {% block contacts %}
                       <center>
                           <td>Контакты:</td><br>
                           Телефон - +375 (29) 568-93-21<br>
                           Email - inviz1806@gmail.com
                       </center>
-                        {% endblock contacts %}
                     </div>
+                    {% endblock contacts %}
+                    {% block authors %}
                     <div class="col">
-                        {% block authors %}
                       <center>
                           <td>Авторы:</td><br>
                           vk.com - <a href="https://vk.com/link_viscount/">Коваленя Дмитрий</a>
                       </center>
-                        {% endblock authors %}
                     </div>
+                    {% endblock authors %}
                 </div>
               </div>
           </div>

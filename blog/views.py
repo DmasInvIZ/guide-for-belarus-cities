@@ -30,7 +30,7 @@ class BlogCreateView(CreateView):
     model = Post
     template_name = 'new_post.html'
     fields = ['title', 'body']  # поля формы
-    success_url = '/blog'
+    success_url = '/blog/home'
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -47,7 +47,7 @@ class BlogUpdateView(LoginRequiredMixin, UpdateView):
     permission_required = 'auth.change_user'
     template_name = 'post_edit.html'
     fields = ['title', 'body']  # поля формы
-    success_url = '/blog'
+    success_url = '/blog/home'
 
     def form_valid(self, form):
         messages.success(self.request, f'Запись изменена')
