@@ -14,9 +14,11 @@
             <li class="nav-item">
                 <a class="nav-item nav-link" href="/users/logout/">Выход</a>
             </li>
-          	{% else %}
+            {% else %}
+            <li>
             	<a class="nav-item nav-link" href="/users/login/">Вход</a>
-          	{% endif %}
+            </li>
+            {% endif %}
         </li>
 {% endblock nav5 %}
 
@@ -35,7 +37,7 @@
             {% else %}
             {% endif %}
             <br>
-            <a href="/suggest">Предложить публикацию</a><br>
+            <a href="/suggest/">Предложить публикацию</a><br>
             <a href="/users/register_next">Дополнить личную информацию</a> (вызывает ошибку)
         </div>
       </div>
