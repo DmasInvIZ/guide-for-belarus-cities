@@ -16,6 +16,6 @@ urlpatterns = [
     # path('town_watch/<int:pk>', TownWatchView.as_view(), name='town_watch'),  ####
     # path('town_eat/<int:pk>', TownEatView.as_view(), name='town_eat'),  #####
     # path('town_sleep/<int:pk>', TownSleepView.as_view(), name='town_sleep'),  ####
-    path('suggest/', publish_suggest_view),  # предложения пользователей
+    path('users/profile/suggest/', publish_suggest_view),  # предложения пользователей
     path('search/', SearchResultsView.as_view(), name='search_results'),  # страница поиска
 ]
