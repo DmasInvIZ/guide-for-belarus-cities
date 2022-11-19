@@ -13,22 +13,25 @@
 
 {% for i in posts %}
 
-<div class="container" style="max-width: 60rem;">
+<div class="container-xxl">
     <div class="card mb-2">
         <div class="card-body">
-            <p class="card-text">{{ i.post }}</p>
+            <p class="card-text">{{ i.post|safe }}</p>
             <p class="card-text"><small class="text-muted">{{ i.date }}</small></p>
         </div>
     </div>
 </div>
 
 {% endfor %}
+
 {% endblock content %}
 
 {% block info %}
+                    <div class="col">
                       <center>
-                          <td style="height:200px; vertical-align:baseline;">Информация:</td><br>
-                          О проекте <br>
-                          <a href="/blog/">Отзывы о путешествиях</a>
+                          <td>Информация:</td><br>
+                          О проекте<br>
+                          <a href="/blog/home/">Отзывы о путешествиях</a>
                       </center>
+                    </div>
 {% endblock info %}

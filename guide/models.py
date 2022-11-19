@@ -79,7 +79,7 @@ class UserTowns(models.Model):
 
 # страница "О проекте"
 class About(models.Model):
-    post = models.TextField('Описание страницы "О проекте"', max_length=10000, default='')
+    post = RichTextField('Описание страницы "О проекте"', max_length=10000, default='')
     date = models.DateTimeField(auto_now=True)  # дата публикации, обновляется при редактировании
 
     def __str__(self):
