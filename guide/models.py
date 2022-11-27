@@ -8,7 +8,7 @@ class News(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='admin', verbose_name='Автор новости')
     date = models.DateTimeField(auto_now=True, verbose_name='Дата публикации')  # дата публикации, обновляется при редактировании
     title = models.CharField('Заголовок новости', max_length=500)  # заголовок новости
-    short_news = models.TextField('Короткое описание новости, превью', max_length=1000, default='Подробности внутри')
+    short_news = models.TextField('Короткое описание новости, превью', max_length=1000, blank=True, null=True, default='Подробности внутри')
     news = RichTextField('Текст новости')  # новость
     image = models.ImageField('Иллюстрация', upload_to='static/news', null=True, blank=True)
     slug = models.SlugField(verbose_name='URL', max_length=160, db_index=True, unique=True)  # название URL транслитом
@@ -61,7 +61,7 @@ class Towns(models.Model):
 class UserTowns(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='', verbose_name='Автор публикации')
     town = models.ForeignKey(Towns, on_delete=models.CASCADE, default='', verbose_name='Город')
-    is_published = models.BooleanField('В публикации', default='False')
+    is_published = models.BooleanField('В публикации', default=False)
     watch = RichTextField('Описание достопримечательностей', default='') \
         # Что посмотреть
     eat = RichTextField('Описание мест общепита, где можно перекусить', default='') \
@@ -79,7 +79,7 @@ class UserTowns(models.Model):
 
 # страница "О проекте"
 class About(models.Model):
-    post = RichTextField('Описание страницы "О проекте"', max_length=10000, default='')
+    post = RichTextField('Описание страницы "О проекте"', default='')  # убрать количество символов
     date = models.DateTimeField(auto_now=True)  # дата публикации, обновляется при редактировании
 
     def __str__(self):

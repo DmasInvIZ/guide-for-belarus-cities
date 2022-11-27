@@ -11,19 +11,23 @@
     <h4>Публикации автора о жизни проекта.</h4>
 </center>
 
-{% for i in posts %}
+
 
 <div class="container-xxl">
+    {% for i in posts %}
     <div class="card mb-2">
         <div class="card-body">
             <p class="card-text">{{ i.post|safe }}</p>
             <p class="card-text"><small class="text-muted">{{ i.date }}</small></p>
         </div>
     </div>
+    {% endfor %}
+    <div class="card mb-2">
+        <div class="card-body">
+            <p class="card-text" style="text-align: center">Здесь пока ничего нет, посты публикует администратор</p>
+        </div>
+    </div>
 </div>
-
-{% endfor %}
-
 {% endblock content %}
 
 {% block info %}
