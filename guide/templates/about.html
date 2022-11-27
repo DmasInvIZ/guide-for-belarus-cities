@@ -12,8 +12,8 @@
 </center>
 
 
-
 <div class="container-xxl">
+    {% if posts %}
     {% for i in posts %}
     <div class="card mb-2">
         <div class="card-body">
@@ -22,11 +22,13 @@
         </div>
     </div>
     {% endfor %}
+{% else %}
     <div class="card mb-2">
         <div class="card-body">
             <p class="card-text" style="text-align: center">Здесь пока ничего нет, посты публикует администратор</p>
         </div>
     </div>
+    {% endif %}
 </div>
 {% endblock content %}
 
