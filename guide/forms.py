@@ -2,8 +2,8 @@ from django import forms
 from guide.models import UserTowns
 
 
-# форма отправки публикации админу
 class SuggestForm(forms.ModelForm):
+    """Форма отправки публикаций в админку"""
 
     class Meta:
         model = UserTowns

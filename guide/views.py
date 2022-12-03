@@ -12,8 +12,8 @@ from .forms import SuggestForm
 from django.contrib import messages
 
 
-# главная страница, на ней новости
 class NewsView(ListView):
+    """Страница с новостями, пока на главной странице сайта"""
     model = News
     template_name = 'main.html'
     context_object_name = 'news'
@@ -26,23 +26,23 @@ class NewsView(ListView):
     #     return context
 
 
-# детали новостей
 class NewsDetailView(DetailView):
+    """Страница с деталями новости"""
     model = News
     template_name = 'news_detail.html'
 
 
-# страница "О проекте"
 @method_decorator(login_required, name='dispatch')
 class AboutView(ListView):
+    """Страница 'О проекте'"""
     model = About
     template_name = 'about.html'
     context_object_name = 'posts'
     ordering = '-date'
 
 
-# страница со списком всех внесенных областей страны
 def what_to_watch_view(request):
+    """Отображение всех областей страны"""
     districts = Districts.objects.all().order_by('name')
     return render(request, 'districts.html', context={'districts': districts})
 
@@ -59,6 +59,7 @@ def what_to_watch_view(request):
 
 
 def towns_view(request, slug):
+    """Отображение городов в выбранной области"""
     towns = Towns.objects.filter(district_id=slug).order_by('name')
     context = {
         'towns': towns,
@@ -66,9 +67,9 @@ def towns_view(request, slug):
     return render(request, 'towns.html', context)
 
 
-# выводим город по запросу (что посмотреть)
 @login_required
 def town_watch_view(request, slug):
+    """Выводим город по запросу (что посмотреть)"""
     town = Towns.objects.get(town_slug=slug)
     pub_town_watch = UserTowns.objects.filter(town_id=slug, is_published=True)
     context = {
@@ -78,9 +79,9 @@ def town_watch_view(request, slug):
     return render(request, 'town_watch.html', context)
 
 
-# выводим город по запросу (где поесть)
 @login_required
 def town_eat_view(request, slug):
+    """Выводим город по запросу (где поесть)"""
     town = Towns.objects.get(town_slug=slug)
     pub_town_eat = UserTowns.objects.filter(town_id=slug, is_published=True)
     context = {
@@ -90,9 +91,9 @@ def town_eat_view(request, slug):
     return render(request, 'town_eat.html', context)
 
 
-# выводим город по запросу (где поспать)
 @login_required
 def town_sleep_view(request, slug):
+    """Выводим город по запросу (где поспать)"""
     town = Towns.objects.get(town_slug=slug)
     pub_town_sleep = UserTowns.objects.filter(town_id=slug, is_published=True)
     context = {
@@ -102,9 +103,9 @@ def town_sleep_view(request, slug):
     return render(request, 'town_sleep.html', context)
 
 
-# страница предложения публикации инфы о городах от пользователей
 @login_required
 def publish_suggest_view(request):
+    """Форма ппредложения публикации инфы о городах от пользователей"""
     if request.method == 'POST':
         form = SuggestForm(request.POST)
         if form.is_valid():
@@ -120,8 +121,8 @@ def publish_suggest_view(request):
     return render(request, 'suggest.html', {'form': form})
 
 
-# поиск по городам
 class SearchResultsView(ListView):
+    """Поиск по городам"""
     model = Towns
     template_name = 'search_results.html'
 
