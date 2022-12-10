@@ -3,10 +3,10 @@ from guide.views import *
 
 
 urlpatterns = [
-    path('', NewsView.as_view()),  # выводим все новости
+    path('', NewsView.as_view(), name='home'),  # выводим все новости
     # path('news/<int:pk>/', NewsDetailView.as_view(), name='news_detail'),  # детали новости
     path('news/<slug:slug>/', NewsDetailView.as_view(), name='news_detail'),  # детали новости с красивым URl
-    path('about/', AboutView.as_view()),  # страница "О проекте"
+    path('about/', AboutView.as_view(), name='about'),  # страница "О проекте"
     path('districts/', what_to_watch_view, name='districts'),  # вывод всех областей страны из бд
     path('<slug:slug>/', towns_view, name='towns'),  # вывод всех внесенных городов в данную область страны
     # path('towns/<int:pk>', TownsView.as_view()),
