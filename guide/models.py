@@ -40,10 +40,11 @@ class Districts(models.Model):
 class Towns(models.Model):
     """Города с привязкой к области"""
     name = models.CharField('Город', max_length=50)  # название города
-    district = models.ForeignKey(Districts, on_delete=models.CASCADE, default='', verbose_name='Область страны')  # название области
+    district = models.ForeignKey(Districts, on_delete=models.CASCADE, default='', verbose_name='Область страны') \
+        # название области
     image = models.ImageField('Фотография для превью', upload_to='static/cities', null=True, blank=True)
     short_info = models.TextField('Короткое описание, для превью', max_length=2000, default='',) \
-        # короткое описание города, для страницы с общим списком городов
+        # короткое описание города, для страницы с общим списком городов  ----------- укоротить описание
     watch = RichTextField('Описание достопримечательностей', default='') \
         # Что посмотреть
     eat = RichTextField('Описание мест общепита, где можно перекусить', default='') \

@@ -7,7 +7,7 @@ from django.utils.decorators import method_decorator
 
 from .models import *
 
-from .forms import SuggestForm
+from .forms import *
 
 from django.contrib import messages
 

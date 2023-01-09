@@ -1,7 +1,3 @@
-/*
-Очищает таблицы с данными, не трогает пользователей
-*/
-
 DELETE FROM blog_post;
 DELETE FROM guide_news;
 DELETE FROM guide_about;

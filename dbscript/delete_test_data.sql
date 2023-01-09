@@ -1,7 +1,3 @@
-/*
-Удаляет только тестовые данные, которые были внесены файлом для заполнения тестовых данных
-*/
-
 DELETE FROM blog_post WHERE id BETWEEN '1000' AND '1002';
 DELETE FROM guide_news WHERE id BETWEEN '1000' AND '1002';
 DELETE FROM guide_about WHERE id BETWEEN '1000' AND '1002';
