@@ -9,16 +9,19 @@ HOST     = "127.0.0.1"
 PORT     = "5432"
 
 # служебная информация
-debug = False
+debug_info = False
 
 def debug(message1: str, message2: str=None, message3: str=None) -> None:
     """Выводит служебное сообщение"""
-    if debug == True:
-        print(f'    [DEBUG] {message1}')
-        if message2:
-            print(f'    [DEBUG] {message2}')
-            if message3:
-                print(f'    [DEBUG] {message3}')
+    if not debug_info:
+        return
+    print(f'    [DEBUG] {message1}')
+    if not message2:
+        return
+    print(f'    [DEBUG] {message2}')
+    if not message3:
+        return
+    print(f'    [DEBUG] {message3}')
 
 
 def connect():
@@ -76,6 +79,49 @@ def reconf():
     make_choice()
 
 
+def run_txt_file():
+    """Выполняет список SQL команд из файла"""
+    try: 
+        connect()
+    ####Заполняем таблицы данными
+        with open('SQLs.txt', encoding='utf-8') as run_file:
+            cur = connection.cursor()
+            for sql in run_file.readlines():
+                print(f'    Выполняю: {sql.rstrip()}')
+                cur.execute(sql)      
+
+    # ошибка синтаксиса SQL в файле
+    except psycopg2.errors.SyntaxError:
+        print('    [ERROR] Ошибка синтаксиса SQL. \n\
+    Проверьте правильность синтаксиса SQL запросов в файле "add_test_data.sql"\n\
+    Данные не добавлены.\n')
+
+    # файл не найден
+    except FileNotFoundError:
+        print('    [ERROR] Файл "SQLs.txt" не найден, поврежден или переименован.\n')
+
+    # не удалось подключиться к БД
+    except psycopg2.OperationalError:
+        print('    [ERROR] Подключение не удалоось... Проверьте настройки подключения.\n')
+
+    # значение существует или скрипт выполнялся
+    except psycopg2.errors.UniqueViolation as err:
+        print(err)
+        print('    [ERROR] Возможно скрипт уже выполнялся.\n')
+
+    except psycopg2.errors.UndefinedTable as err:
+        print('    [ERROR]', err)
+        
+    #### сохраняем и закрываем подключение (сработает если исключения не было)
+    else:
+        connection.commit()
+        connection.close()
+        print('    [OK] Команды из файла выполнены.\n')
+        debug('Изменения сохранены.', 'Подключение закрыто.\n')
+
+    make_choice()
+
+
 def connection_test():
     """Тест подключения к БД
         Пробует подключится и отключается,
@@ -90,7 +136,7 @@ def connection_test():
 
     # ошибка подключения
     except psycopg2.OperationalError:
-        print('    Подключение не удалоось... Поробуйте изменить настройки.\n')
+        print('    [ERROR] Подключение не удалоось... Поробуйте изменить настройки.\n')
 
     # выводится если не было ошибок
     else:
@@ -106,7 +152,7 @@ def delete_test_data():
         with open('delete_test_data.sql', encoding='utf-8') as del_test_data:
             cur = connection.cursor()
             for sql in del_test_data.readlines():
-                debug(f'Выполняю: {sql.rstrip()}')
+                debug(f'    Выполняю: {sql.rstrip()}')
                 cur.execute(sql)
 
     # ошибка подключения к БД
@@ -121,7 +167,7 @@ def delete_test_data():
 
     # файл не найден
     except FileNotFoundError:
-        print('    [ERROR]Файл "delete_test_data.sql" не найден, поврежден или переименован.')
+        print('    [ERROR] Файл "delete_test_data.sql" не найден, поврежден или переименован.\n')
         
     #### сохраняем и закрываем подключение (сработает если исключения не было)
     else:
@@ -142,18 +188,18 @@ def add_test_data():
         with open('add_test_data.sql', encoding='utf-8') as add_test_data:
             cur = connection.cursor()
             for sql in add_test_data.readlines():
-                debug(f'Выполняю: {sql.rstrip()}')
+                debug(f'    Выполняю: {sql.rstrip()}')
                 cur.execute(sql)      
 
     # ошибка синтаксиса SQL в файле
     except psycopg2.errors.SyntaxError:
         print('    [ERROR] Ошибка синтаксиса SQL. \n\
     Проверьте правильность синтаксиса SQL запросов в файле "add_test_data.sql"\n\
-    Данные не добавлены.')
+    Данные не добавлены.\n')
 
     # файл не найден
     except FileNotFoundError:
-        print('    [ERROR] Файл "add_test_data.sql" не найден, поврежден или переименован.')
+        print('    [ERROR] Файл "add_test_data.sql" не найден, поврежден или переименован.\n')
 
     # не удалось подключиться к БД
     except psycopg2.OperationalError:
@@ -186,7 +232,7 @@ def delete_data():
         with open('clean_tables.sql') as clear:
             cur = connection.cursor()
             for sql in clear.readlines():
-                debug(f'Выполняю: {sql.rstrip()}')
+                debug(f'    Выполняю: {sql.rstrip()}')
                 cur.execute(sql)
                 
     # ошибка синтаксиса SQL в файле
@@ -255,7 +301,7 @@ def make_sql():
     except psycopg2.errors.SyntaxError:
         print('    [ERROR] Ошибка синтаксиса SQL. \n\
     Проверьте правильность синтаксиса SQL запросов в файле "clean_tables.sql"\n\
-    Таблицы не очищены.')
+    Таблицы не очищены.\n')
 
     # не удалось подключиться к БД
     except psycopg2.OperationalError:
@@ -310,6 +356,9 @@ info5 = 'Этот скрипт тестирует подключение к БД
 info6 = 'Здесь можно сделать SQL запрос вручную.\n\
 Помните про синтаксис.\n'
 
+info8 = 'Этот скрипт выполняет SQL запросы из файла "SQLs.txt".\n\
+Убедитесь что синтаксис языка SQL соблюден.'
+
 ####
 
 greeting()  # Выводим экран приветствия и текущие настройки подключения
@@ -323,7 +372,8 @@ def make_choice():
 3 - Удаление всех данных из таблиц изменяемых пользователем\n\
 4 - Изменить настройки подключения к БД\n\
 5 - Тест подключения к БД\n\
-6 - Сделать SQL запрос в БД (Работает кривовато, есть ошибка транзакций)\n\
+6 - [TEST] Сделать SQL-запрос в БД (Работает кривовато, есть ошибка транзакций)\n\
+8 - [TEST] Выполнить SQL-команды из файла SQLs.txt\n\
 9 - Показать настройки подключения к БД\n\
 0 - Выход из программы')
     
@@ -374,6 +424,11 @@ def make_choice():
         print(info6)
         if input('Продолжаем? "Enter" - Да, любой другой символ - нет: ') == '':
             make_sql()
+
+    elif choice == '8':
+        print(info8)
+        if input('Продолжаем? "Enter" - Да, любой другой символ - нет: ') == '':
+            run_txt_file()#  Выполняем команды из файла SQLs.txt
         
     elif choice == '9':
         curr_conn_config()  # Выводим текущие настройки подключения

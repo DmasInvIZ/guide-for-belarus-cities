@@ -33,10 +33,25 @@
 <!--            Можно заполнить через админ-панель -->
                 Ваше имя - {{user.first_name}}<br>
                 Ваша фамилия - {{user.last_name}}<br>
+                Ваш id - {{user.id}}
             <br>
             <a href=/users/profile/suggest/>Предложить публикацию</a><br>
-            <a href="/users/register_next">Дополнить личную информацию</a> (вызывает ошибку)
         </div>
+        {% if suggest %}
+            <h3>Мои публикации:</h3>
+        <table>
+            <th>Город</th>
+            <th>Опубликовано</th>
+            {% for i in suggest %}
+                    <tr>
+                        <td><a href="/town_watch/{{ i.town_id }}">{{i.town}}</a></td>
+                        <td>{{i.is_published}}</td>
+                    </tr>
+            {% endfor %}
+                    </table>
+        {% else %}
+            <h3>Вы пока ничего не отправляли...</h3>
+        {% endif %}
     </div>
 </div>
 {% endblock content %}
