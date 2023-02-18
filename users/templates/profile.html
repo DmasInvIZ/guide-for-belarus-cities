@@ -1,5 +1,4 @@
 {% extends "base.html" %}
-{% load crispy_forms_tags %}
 
 {% block title %}
 <title> Профиль пользователя {{user.username}} </title>
@@ -38,17 +37,38 @@
             <a href=/users/profile/suggest/>Предложить публикацию</a><br>
         </div>
         {% if suggest %}
-            <h3>Мои публикации:</h3>
-        <table>
-            <th>Город</th>
-            <th>Опубликовано</th>
-            {% for i in suggest %}
-                    <tr>
-                        <td><a href="/town_watch/{{ i.town_id }}">{{i.town}}</a></td>
-                        <td>{{i.is_published}}</td>
-                    </tr>
-            {% endfor %}
-                    </table>
+          <table>
+           <tr>
+            <th></th><th>2004</th><th>2005</th><th>2006</th>
+           </tr>
+           <tr>
+            <td>Рубины</td><td>43</td><td>51</td><td>79</td>
+           </tr>
+           <tr>
+            <td>Изумруды</td><td>28</td><td>34</td><td>48</td>
+           </tr>
+           <tr>
+            <td>Сапфиры</td><td>29</td><td>57</td><td>36</td>
+           </tr>
+          </table>
+
+<!--        <table border="1">-->
+<!--            <caption>Мои публикации:</caption>-->
+<!--            <thead>-->
+<!--                <tr>-->
+<!--                    <th>Город</th>-->
+<!--                    <th>Опубликовано</th>-->
+<!--                </tr>-->
+<!--            </thead>-->
+<!--            <tbody>-->
+<!--            {% for i in suggest %}-->
+<!--            <tr>-->
+<!--                <td><a href="/town_watch/{{ i.town_id }}">{{i.town}}</a></td>-->
+<!--                <td>{{i.is_published}}</td>-->
+<!--            </tr>-->
+<!--            {% endfor %}-->
+<!--            </tbody>-->
+<!--        </table>-->
         {% else %}
             <h3>Вы пока ничего не отправляли...</h3>
         {% endif %}
